@@ -117,12 +117,16 @@ HiInclusiveJetAnalyzer::HiInclusiveJetAnalyzer(const edm::ParameterSet& iConfig)
   hardPtMin_ = iConfig.getUntrackedParameter<double>("hardPtMin",4);
   jetPtMin_ = iConfig.getParameter<double>("jetPtMin");
 
-  if(isMC_){
+//Samuel fucking shit up
+
+//  if(isMC_){
     genjetTag_ = consumes<vector<reco::GenJet> > (iConfig.getParameter<InputTag>("genjetTag"));
     //genjetTag_ = consumes<edm::View<reco::Jet>>(iConfig.getParameter<InputTag>("genjetTag"));
-    if(useHepMC_) eventInfoTag_ = consumes<HepMCProduct> (iConfig.getParameter<InputTag>("eventInfoTag"));
-    eventGenInfoTag_ = consumes<GenEventInfoProduct> (iConfig.getParameter<InputTag>("eventInfoTag"));
-  }
+    //if(useHepMC_)
+         eventInfoTag_ = consumes<HepMCProduct> (iConfig.getParameter<InputTag>("eventInfoTag"));
+//    eventGenInfoTag_ = consumes<GenEventInfoProduct> (iConfig.getParameter<InputTag>("eventInfoTag"));
+//  }
+
   verbose_ = iConfig.getUntrackedParameter<bool>("verbose",false);
 
   useVtx_ = iConfig.getUntrackedParameter<bool>("useVtx",false);
@@ -1782,13 +1786,16 @@ HiInclusiveJetAnalyzer::analyze(const Event& iEvent,
       if(beamParticles.first != 0)jets_.beamId1 = beamParticles.first->pdg_id();
       if(beamParticles.second != 0)jets_.beamId2 = beamParticles.second->pdg_id();
     }
-    
-    edm::Handle<GenEventInfoProduct> hEventInfo;
-    iEvent.getByToken(eventGenInfoTag_,hEventInfo);
+    //Sam is over here, fucking up, this was a GenEventInfoProduct
+    edm::Handle<edm::HepMCProduct> hEventInfo;
+
+    //This was a GenEventInfoTag, sam is fucking shit up
+    iEvent.getByToken(eventInfoTag_,hEventInfo);
     //jets_.pthat = hEventInfo->binningValues()[0];
 
-    // binning values and qscale appear to be equivalent, but binning values not always present
-    jets_.pthat = hEventInfo->qScale();
+    //binning values and qscale appear to be equivalent, but binning values not always present
+    //Sam commented out the pthat
+    //jets_.pthat = hEventInfo->qScale();
 
     edm::Handle<vector<reco::GenJet> >genjets;
     //edm::Handle<edm::View<reco::Jet>> genjets;
