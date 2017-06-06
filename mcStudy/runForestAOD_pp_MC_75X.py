@@ -75,9 +75,12 @@ process.TFileService = cms.Service("TFileService",
 process.load('RecoJets.JetProducers.ak5PFJets_cfi')
 process.ak5PFJets.doAreaFastjet = True
 process.ak3PFJets = process.ak5PFJets.clone(rParam = 0.3)
+process.ak4PFJets = process.ak5PFJets.clone(rParam = 0.4)
+
 process.load('RecoJets.JetProducers.ak5GenJets_cfi')
 process.ak3GenJets = process.ak5GenJets.clone(rParam = 0.3)
 process.ak4GenJets = process.ak5GenJets.clone(rParam = 0.4)
+
 process.load('RecoJets.Configuration.GenJetParticles_cff')
 process.load('RecoHI.HiJetAlgos.HiGenJets_cff')
 process.load('HeavyIonsAnalysis.JetAnalysis.makePartons_cff')
@@ -86,10 +89,13 @@ process.highPurityTracks = cms.EDFilter("TrackSelector",
                                 cut = cms.string('quality("highPurity")')
 )
 process.load('HeavyIonsAnalysis.JetAnalysis.jets.ak3PFJetSequence_pp_mc_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.ak4PFJetSequence_pp_mc_cff')
 process.load('HeavyIonsAnalysis.JetAnalysis.jets.ak5PFJetSequence_pp_mc_cff')
 
 process.ak3PFJetAnalyzer.useHepMC = cms.untracked.bool(True)
 process.ak3PFJetAnalyzer.eventInfoTag = cms.InputTag("source")
+process.ak4PFJetAnalyzer.useHepMC = cms.untracked.bool(True)
+process.ak4PFJetAnalyzer.eventInfoTag = cms.InputTag("source")
 process.ak5PFJetAnalyzer.useHepMC = cms.untracked.bool(True)
 process.ak5PFJetAnalyzer.eventInfoTag = cms.InputTag("source")
 
@@ -97,11 +103,14 @@ process.jetSequences = cms.Sequence(
     process.myPartons +
     process.genParticlesForJets +
     process.ak3GenJets +
+    process.ak4GenJets +
     process.ak5GenJets +
     process.ak3PFJets +
+    process.ak4PFJets +
     process.ak5PFJets +
     process.highPurityTracks +
     process.ak3PFJetSequence +
+    process.ak4PFJetSequence +
     process.ak5PFJetSequence 
 )
 
@@ -213,46 +222,52 @@ process.load('HeavyIonsAnalysis.JetAnalysis.rechitanalyzer_aod_cfi')
 
 ##### modifications to rechitanalyzer inputs #####
 
+process.load('HeavyIonsAnalysis.JetAnalysis.rechitanalyzer_cfi')
 process.rechitanalyzer.EBRecHitSrc = cms.untracked.InputTag("reducedEcalRecHitsEB")
 process.rechitanalyzer.EERecHitSrc = cms.untracked.InputTag("reducedEcalRecHitsEE")
 process.rechitanalyzer.hcalHFRecHitSrc = cms.untracked.InputTag("reducedHcalRecHits", "hfreco")
 process.rechitanalyzer.hcalHBHERecHitSrc = cms.untracked.InputTag("reducedHcalRecHits", "hbhereco")
-process.rechitanalyzer.hasVtx = cms.untracked.bool(False)
-process.rechitanalyzer.useJets = cms.untracked.bool(False)
-process.rechitanalyzer.doBasicClusters = cms.untracked.bool(False)
-process.rechitanalyzer.doTowers = cms.untracked.bool(False)
+process.rechitanalyzer.hasVtx = cms.untracked.bool(True)
+process.rechitanalyzer.useJets = cms.untracked.bool(True)
+process.rechitanalyzer.doBasicClusters = cms.untracked.bool(True)
+process.rechitanalyzer.doTowers = cms.untracked.bool(True)
 process.rechitanalyzer.doCASTOR = cms.untracked.bool(False)
 process.rechitanalyzer.doZDCDigi = cms.untracked.bool(False)
 process.rechitanalyzer.doZDCRecHit = cms.untracked.bool(False)
 process.rechitanalyzer.doVS = cms.untracked.bool(False)
-process.rechitanalyzer.doUEraw = cms.untracked.bool(False)
+process.rechitanalyzer.doUEraw = cms.untracked.bool(True)
 process.rechitanalyzer.doFastJet = cms.untracked.bool(False)
 process.rechitanalyzer.calZDCDigi = cms.untracked.bool(False)
-process.rechitanalyzer.doEbyEonly = cms.untracked.bool(False)
-process.rechitanalyzer.doHF = cms.untracked.bool(False)
+process.rechitanalyzer.doHF = cms.untracked.bool(True)
 process.rechitanalyzer.vtxSrc = cms.untracked.InputTag("offlinePrimaryVerticesWithBS")
 process.rechitanalyzer.JetSrc = cms.untracked.InputTag("ak4CaloJets")
-
-process.pfTowers.vtxSrc = cms.untracked.InputTag("offlinePrimaryVerticesWithBS")
-process.pfTowers.JetSrc = cms.untracked.InputTag("ak4CaloJets")
+process.rechitAna = cms.Sequence(process.rechitanalyzer)
 
 ##### modifications to rechitanalyzer inputs - END #####
+
+process.load("HeavyIonsAnalysis.MuonAnalysis.hltMuTree_cfi")
+process.hltMuTree.vertices = cms.InputTag("offlinePrimaryVertices")
+
+
+process.demo = cms.EDAnalyzer('TestSolution')
 
 #########################
 # Main analysis list
 #########################
 process.ana_step = cms.Path(process.hltanalysis *
+			    process.demo *
                             process.hiEvtAnalyzer *
                             process.HiGenParticleAna*
                             process.jetSequences +
-                            process.egmGsfElectronIDSequence + #Should be added in the path for VID module
+                            #process.egmGsfElectronIDSequence + #Should be added in the path for VID module
                             process.ggHiNtuplizer +
                             process.ggHiNtuplizerGED +
                             process.pfcandAnalyzer +
                             process.HiForest +
 			    process.trackSequencesPP +
-                            process.runAnalyzer 
-			    #process.rechitanalyzer
+                            process.runAnalyzer +
+                            process.hltMuTree + 
+			    process.rechitanalyzer
                             #process.tupelPatSequence
 )
 

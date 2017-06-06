@@ -39,9 +39,9 @@ pfTowers = rechitanalyzer.clone(
     )
 
 
-rechitanalyzer.HBHETreePtMin = cms.untracked.double(15)
-rechitanalyzer.HFTreePtMin = cms.untracked.double(15)
-rechitanalyzer.EBTreePtMin = cms.untracked.double(15)
-rechitanalyzer.EETreePtMin = cms.untracked.double(15)
+rechitanalyzer.HBHETreePtMin = cms.untracked.double(0)
+rechitanalyzer.HFTreePtMin = cms.untracked.double(0)
+rechitanalyzer.EBTreePtMin = cms.untracked.double(0)
+rechitanalyzer.EETreePtMin = cms.untracked.double(0)
 rechitanalyzer.TowerTreePtMin = cms.untracked.double(-9999)
 rechitanalyzer.doHF = cms.untracked.bool(True)
