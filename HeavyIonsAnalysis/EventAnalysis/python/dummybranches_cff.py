@@ -4,6 +4,77 @@ import FWCore.ParameterSet.Config as cms
 def addHLTdummybranches( process):
 
   process.hltanalysis.dummyBranches.extend( [
+      "HLT_HIUPCL1SingleMuOpenNotHF2_v1"
+      ,"HLT_HIUPCSingleMuNotHF2Pixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1DoubleMuOpenNotHF2_v1"
+      ,"HLT_HIUPCDoubleMuNotHF2Pixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1SingleEG2NotHF2_v1"
+      ,"HLT_HIUPCSingleEG2NotHF2Pixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1DoubleEG2NotHF2_v1"
+      ,"HLT_HIUPCDoubleEG2NotHF2Pixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1SingleEG5NotHF2_v1"
+      ,"HLT_HIUPCSingleEG5NotHF2Pixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1DoubleMuOpenNotHF1_v1"
+      ,"HLT_HIUPCDoubleMuNotHF1Pixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1DoubleEG2NotZDCAND_v1"
+      ,"HLT_HIUPCL1DoubleEG2NotZDCANDPixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1DoubleMuOpenNotZDCAND_v1"
+      ,"HLT_HIUPCL1DoubleMuOpenNotZDCANDPixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1EG2NotZDCAND_v1"
+      ,"HLT_HIUPCEG2NotZDCANDPixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1MuOpenNotZDCAND_v1"
+      ,"HLT_HIUPCL1MuOpenNotZDCANDPixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1NotHFplusANDminusTH0BptxAND_v1"
+      ,"HLT_HIUPCL1NotHFplusANDminusTH0BptxANDPixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1NotHFMinimumbiasHFplusANDminustTH0_v1"
+      ,"HLT_HIUPCL1NotHFMinimumbiasHFplusANDminustTH0Pixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1DoubleMuOpenNotHFMinimumbiasHFplusANDminustTH0_v1"
+      ,"HLT_HIUPCL1DoubleMuOpenNotHFMinimumbiasHFplusANDminustTH0Pixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1NotMinimumBiasHF2_AND_v1"
+      ,"HLT_HIUPCL1NotMinimumBiasHF2_ANDPixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1ZdcOR_BptxAND_v1"
+      ,"HLT_HIUPCL1ZdcOR_BptxANDPixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1ZdcXOR_BptxAND_v1"
+      ,"HLT_HIUPCL1ZdcXOR_BptxANDPixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1NotZdcOR_BptxAND_v1"
+      ,"HLT_HIUPCL1NotZdcOR_BptxANDPixel_SingleTrack_v1"
+      ,"HLT_HIPuAK4CaloJet40_Eta5p1_v1"
+      ,"HLT_HIPuAK4CaloJet60_Eta5p1_v1"
+      ,"HLT_HIPuAK4CaloJet80_Eta5p1_v1"
+      ,"HLT_HIPuAK4CaloJet100_Eta5p1_v1"
+      ,"HLT_HIZeroBias_v1"
+      ,"HLT_HIZeroBiasPixel_SingleTrack_v1"
+      ,"HLT_HIRandom_v1"
+      ])
+
+def addHLTdummybranchesForPP( process):
+
+  process.hltanalysis.dummyBranches.extend( [
+      "HLT_HIUPCL1DoubleMuOpenNotHF2_v1"
+      ,"HLT_HIUPCDoubleMuNotHF2Pixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1SingleEG2NotHF2_v1"
+      ,"HLT_HIUPCSingleEG2NotHF2Pixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1DoubleEG2NotHF2_v1"
+      ,"HLT_HIUPCDoubleEG2NotHF2Pixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1SingleEG5NotHF2_v1"
+      ,"HLT_HIUPCSingleEG5NotHF2Pixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1MuOpen_NotMinimumBiasHF2_AND_v1"
+      ,"HLT_HIUPCMuOpen_NotMinimumBiasHF2_ANDPixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1NotMinimumBiasHF2_AND_v1"
+      ,"HLT_HIUPCNotMinimumBiasHF2_ANDPixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1ZdcOR_BptxAND_v1"
+      ,"HLT_HIUPCZdcOR_BptxANDPixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1ZdcXOR_BptxAND_v1"
+      ,"HLT_HIUPCZdcXOR_BptxANDPixel_SingleTrack_v1"
+      ,"HLT_HIUPCL1NotZdcOR_BptxAND_v1"
+      ,"HLT_HIUPCNotZdcOR_BptxANDPixel_SingleTrack_v1"
+      ,"HLT_HIZeroBias_v1"
+      ,"HLT_HIZeroBiasPixel_SingleTrack_v1"
+      ,"HLT_HIRandom_v1"
+      ])
+
+"""
+  process.hltanalysis.dummyBranches.extend( [
       
       "HLT_HIPuAK4CaloJet40_Eta5p1_v1"
       ,"HLT_HIPuAK4CaloJet40_Eta5p1_v2"
@@ -283,7 +354,8 @@ def addHLTdummybranches( process):
       ,"HLT_HIL1Centralityext50100HFplusANDminusTH0_v1"
       ,"HLT_HIL1Centralityext70100HFplusANDminusTH0_v1"
       ])
-
+"""
+"""
 def addHLTdummybranchesForPP( process):
 
   process.hltanalysis.dummyBranches.extend( [
@@ -480,4 +552,4 @@ def addHLTdummybranchesForPP( process):
       ,"HLT_AK4PFBJetBSSV60_Eta2p1_v1"
       ,"HLT_AK4PFBJetBSSV80_Eta2p1_v1"
       ])
-
+"""

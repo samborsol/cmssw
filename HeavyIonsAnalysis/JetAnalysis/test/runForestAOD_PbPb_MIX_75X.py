@@ -50,23 +50,12 @@ from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, '75X_mcRun2_HeavyIon_v13', '') #for now track GT manually, since centrality tables updated ex post facto
 process.HiForest.GlobalTagLabel = process.GlobalTag.globaltag
 
-#overwrite GT for centrality table for Cymbal5Ev8 tune
-process.GlobalTag.snapshotTime = cms.string("9999-12-31 23:59:59.000")
-process.GlobalTag.toGet.extend([
-   cms.PSet(record = cms.string("HeavyIonRcd"),
-      tag = cms.string("CentralityTable_HFtowers200_HydjetCymbal5Ev8_v758x01_mc"),
-      connect = cms.string("frontier://FrontierProd/CMS_CONDITIONS"),
-      label = cms.untracked.string("HFtowersHydjetCymbal5Ev8")
-   ),
-])
-
 from HeavyIonsAnalysis.Configuration.CommonFunctions_cff import overrideJEC_PbPb5020
 process = overrideJEC_PbPb5020(process)
 
 process.load("RecoHI.HiCentralityAlgos.CentralityBin_cfi")
-process.centralityBin.Centrality = cms.InputTag("hiCentrality")
-process.centralityBin.centralityVariable = cms.string("HFtowers")
-process.centralityBin.nonDefaultGlauberModel = cms.string("HydjetCymbal5Ev8")
+# process.centralityBin.Centrality = cms.InputTag("hiCentrality")
+# process.centralityBin.centralityVariable = cms.string("HFtowers")
 #process.centralityBin.nonDefaultGlauberModel = cms.string("HydjetDrum5")
 
 #####################################################################################
@@ -90,10 +79,8 @@ process.load('HeavyIonsAnalysis.JetAnalysis.GenJetSequence')
 process.load('HeavyIonsAnalysis.JetAnalysis.hiSignalGenFilters')
 
 
-#PU minimal tower cut reco sequence
-process.load('HeavyIonsAnalysis.JetAnalysis.FullJetSequence_puLimitedPbPb')
 # nominal jet reco sequence
-#process.load('HeavyIonsAnalysis.JetAnalysis.FullJetSequence_nominalPbPb')
+process.load('HeavyIonsAnalysis.JetAnalysis.FullJetSequence_nominalPbPb')
 # replace above with this one for JEC:
 #process.load('HeavyIonsAnalysis.JetAnalysis.FullJetSequence_JECPbPb')
 
@@ -162,20 +149,6 @@ process.ggHiNtuplizerGED = process.ggHiNtuplizer.clone(recoPhotonSrc = cms.Input
 process.load("HeavyIonsAnalysis.VectorBosonAnalysis.tupelSequence_PbPb_mc_cff")
 
 #####################################################################################
-
-#replace pp CSVv2 with PbPb CSVv2 (positive and negative taggers unchanged!)
-process.load('RecoBTag.CSVscikit.csvscikitTagJetTags_cfi')
-process.load('RecoBTag.CSVscikit.csvscikitTaggerProducer_cfi')
-process.akPu4PFCombinedSecondaryVertexV2BJetTags = process.pfCSVscikitJetTags.clone()
-process.akPu4PFCombinedSecondaryVertexV2BJetTags.tagInfos=cms.VInputTag(cms.InputTag("akPu4PFImpactParameterTagInfos"), cms.InputTag("akPu4PFSecondaryVertexTagInfos"))
-
-process.akCs4PFCombinedSecondaryVertexV2BJetTags = process.pfCSVscikitJetTags.clone()
-process.akCs4PFCombinedSecondaryVertexV2BJetTags.tagInfos=cms.VInputTag(cms.InputTag("akCs4PFImpactParameterTagInfos"), cms.InputTag("akCs4PFSecondaryVertexTagInfos"))
-
-process.akPu4CaloCombinedSecondaryVertexV2BJetTags = process.pfCSVscikitJetTags.clone()
-process.akPu4CaloCombinedSecondaryVertexV2BJetTags.tagInfos=cms.VInputTag(cms.InputTag("akPu4CaloImpactParameterTagInfos"), cms.InputTag("akPu4CaloSecondaryVertexTagInfos"))
-process.CSVscikitTags.weightFile=cms.FileInPath('HeavyIonsAnalysis/JetAnalysis/data/bTagCSVv2PbPb_758p3_Jan2017_BDTG_weights.xml')
-
 
 #########################
 # Main analysis list

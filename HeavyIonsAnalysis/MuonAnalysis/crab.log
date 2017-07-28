@@ -1,0 +1,16 @@
+DEBUG 2017-03-08 14:18:07,935: 	 Executing command: 'status'
+DEBUG 2017-03-08 14:18:07,935: 	 Found CRAB cache file /u/user/bekim/.crab3
+ERROR 2017-03-08 14:18:07,937: 	 Error: crab_Hiforest_PbPb_Run2015_HLT_HIRandom_v1 is not a valid CRAB project directory.
+ERROR 2017-03-08 14:18:07,937: 	 Caught exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1702/bin/crab", line 160, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1702/bin/crab", line 146, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1702/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 257, in __init__
+    self.validateOptions()
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1702/lib/python2.7/site-packages/CRABClient/Commands/status.py", line 762, in validateOptions
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/crab3/slc6_amd64_gcc493/cms/crabclient/3.3.1702/lib/python2.7/site-packages/CRABClient/Commands/SubCommand.py", line 566, in validateOptions
+    raise ConfigurationException(msg)
+ConfigurationException: [91mError[0m: crab_Hiforest_PbPb_Run2015_HLT_HIRandom_v1 is not a valid CRAB project directory.

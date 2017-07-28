@@ -1,0 +1,34 @@
+CentralityAnalysis/tools/makeSmearedTable.C: TTree * teven = (TTree *) infile->Get("hiEvtAnalyzer/HiTree");
+CentralityAnalysis/tools/makeTable2.C: TChain * t = new TChain("hiEvtAnalyzer/HiTree");
+EventAnalysis/python/hievtanalyzer_data_cfi.py:hiEvtAnalyzer = cms.EDAnalyzer('HiEvtAnalyzer',
+Binary file EventAnalysis/python/hievtanalyzer_data_cfi.pyc matches
+EventAnalysis/python/hievtanalyzer_mc_cfi.py:hiEvtAnalyzer.doMC          = cms.bool(True)
+EventAnalysis/python/hievtanalyzer_mc_cfi.py:hiEvtAnalyzer.doHiMC          = cms.bool(False)
+EventAnalysis/python/hievtanalyzer_mc_cfi.py:hiEvtAnalyzer.useHepMC      = cms.bool(False)
+Binary file EventAnalysis/python/hievtanalyzer_mc_cfi.pyc matches
+Binary file EventAnalysis/python/.hievtanalyzer_data_cfi.py.swp matches
+EventAnalysis/test/crabConfig.py:#config.JobType.psetName    = 'hiEvtAnalyzer_mc_cfg.py'
+EventAnalysis/test/crabConfig.py:config.JobType.psetName    = 'hiEvtAnalyzer_data_cfg.py'
+EventAnalysis/test/hiEvtAnalyzer_data_cfg.py:process.p = cms.Path(process.collisionEventSelectionAOD * process.centralityBin * process.hiEvtAnalyzer)
+EventAnalysis/test/hiEvtAnalyzer_mc_cfg.py:process.hiEvtAnalyzer.doMC          = cms.bool(False) # because heavyIon gen event is not yet in AOD
+EventAnalysis/test/hiEvtAnalyzer_mc_cfg.py:process.p = cms.Path(process.centralityBin * process.hiEvtAnalyzer)
+JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:                            process.hiEvtAnalyzer*
+JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:process.hiEvtAnalyzer.doMC = cms.bool(True) #general MC info
+JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:process.hiEvtAnalyzer.doHiMC = cms.bool(True) #HI specific MC info
+JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:                            process.hiEvtAnalyzer*
+JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:process.hiEvtAnalyzer.doMC = cms.bool(True) #general MC info
+JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:process.hiEvtAnalyzer.doHiMC = cms.bool(True) #HI specific MC info
+JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:                            process.hiEvtAnalyzer*
+JetAnalysis/test/runForestAOD_pp_DATA_75X.py:process.hiEvtAnalyzer.Vertex = cms.InputTag("offlinePrimaryVertices")
+JetAnalysis/test/runForestAOD_pp_DATA_75X.py:process.hiEvtAnalyzer.doCentrality = cms.bool(False)
+JetAnalysis/test/runForestAOD_pp_DATA_75X.py:process.hiEvtAnalyzer.doEvtPlane = cms.bool(False)
+JetAnalysis/test/runForestAOD_pp_DATA_75X.py:                            process.hiEvtAnalyzer *
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.hiEvtAnalyzer.Vertex = cms.InputTag("offlinePrimaryVertices")
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.hiEvtAnalyzer.doCentrality = cms.bool(False)
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.hiEvtAnalyzer.doEvtPlane = cms.bool(False)
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.hiEvtAnalyzer.doMC = cms.bool(True) #general MC info
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.hiEvtAnalyzer.doHiMC = cms.bool(False) #HI specific MC info
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:                            process.hiEvtAnalyzer *
+Binary file JetAnalysis/test/runForestAOD_pp_MC_75X.pyc matches
+grep: input file 'hiEvtAnalyzer.log' is also the output
+Binary file .nfs0000000000159bdd00000067 matches

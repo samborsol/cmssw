@@ -4,11 +4,11 @@ rechitanalyzer = cms.EDAnalyzer("RecHitTreeProducer",
   EBRecHitSrc = cms.untracked.InputTag("ecalRecHit","EcalRecHitsEB"),
   EERecHitSrc = cms.untracked.InputTag("ecalRecHit","EcalRecHitsEE"),
   BasicClusterSrc1 = cms.untracked.InputTag("islandBasicClusters","islandBarrelBasicClusters"),
-  hcalHFRecHitSrc = cms.untracked.InputTag("hfreco"),
-  hcalHBHERecHitSrc = cms.untracked.InputTag("hbhereco"),
+  hcalHFRecHitSrc = cms.untracked.InputTag("hfreco","reducedHcalRecHits"),
+  hcalHBHERecHitSrc = cms.untracked.InputTag("hbhereco","reducedHcalRecHits"),
   towersSrc = cms.untracked.InputTag("towerMaker"),
   JetSrc = cms.untracked.InputTag("iterativeConePu5CaloJets"),
-  useJets = cms.untracked.bool(True),
+  useJets = cms.untracked.bool(False),
   doBasicClusters = cms.untracked.bool(False),
   doTowers = cms.untracked.bool(True),
   doEcal = cms.untracked.bool(True),
@@ -17,10 +17,10 @@ rechitanalyzer = cms.EDAnalyzer("RecHitTreeProducer",
   doFastJet = cms.untracked.bool(False),
   FastJetTag = cms.untracked.InputTag("kt4CaloJets"),
   doEbyEonly = cms.untracked.bool(False),
-  HFtowerMin = cms.untracked.double(3),
+  HFtowerMin = cms.untracked.double(3.),
   HFlongMin = cms.untracked.double(0.5),
   HFshortMin = cms.untracked.double(0.85),
-                                doVS = cms.untracked.bool(True),
+                                doVS = cms.untracked.bool(False),
                                 bkg = cms.InputTag("voronoiBackgroundCalo"),
                                 etaBins = cms.int32(15),
                                 fourierOrder = cms.int32(5),
@@ -45,3 +45,12 @@ rechitanalyzer.EBTreePtMin = cms.untracked.double(0)
 rechitanalyzer.EETreePtMin = cms.untracked.double(0)
 rechitanalyzer.TowerTreePtMin = cms.untracked.double(-9999)
 rechitanalyzer.doHF = cms.untracked.bool(True)
+
+#####
+rechitanalyzer.vtxSrc = cms.untracked.InputTag("offlinePrimaryVerticesWithBS")
+rechitanalyzer.JetSrc = cms.untracked.InputTag("ak4CaloJets")
+#rechitanalyzer.doVS = cms.untracked.bool(False)
+
+pfTowers.vtxSrc = cms.untracked.InputTag("offlinePrimaryVerticesWithBS")
+pfTowers.JetSrc = cms.untracked.InputTag("ak4CaloJets")
+#####

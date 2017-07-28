@@ -25,9 +25,8 @@ process.HiForest.HiForestVersion = cms.string(version)
 
 process.source = cms.Source("PoolSource",
                             fileNames = cms.untracked.vstring(
-                                #"/store/group/phys_heavyions/velicanu/reco/HIPhysicsMinBiasUPC/v0/000/262/548/recoExpress_84.root"
-                            'file:samples/PbPb_DATA_AOD.root'
-				)
+                                "/store/group/phys_heavyions/velicanu/reco/HIPhysicsMinBiasUPC/v0/000/262/548/recoExpress_84.root"
+                            )
 )
 
 
@@ -74,11 +73,128 @@ process.TFileService = cms.Service("TFileService",
 #############################
 # Jets
 #############################
+from Configuration.StandardSequences.ReconstructionHeavyIons_cff import voronoiBackgroundPF, voronoiBackgroundCalo
+from RecoJets.JetProducers.kt4PFJets_cfi import kt4PFJets
+from RecoHI.HiJetAlgos.hiFJRhoProducer import hiFJRhoProducer
+process.kt4PFJets = kt4PFJets
+process.hiFJRhoProducer = hiFJRhoProducer
+process.kt4PFJets.src = cms.InputTag('particleFlowTmp')
+process.kt4PFJets.doAreaFastjet = True
+process.kt4PFJets.jetPtMin      = cms.double(0.0)
+process.kt4PFJets.GhostArea     = cms.double(0.005)
+from RecoHI.HiJetAlgos.hiFJGridEmptyAreaCalculator_cff import hiFJGridEmptyAreaCalculator
+process.hiFJGridEmptyAreaCalculator = hiFJGridEmptyAreaCalculator
 
-#require the pu algo to use a certain threshold of towers for bg subtraction
-#process.load("HeavyIonsAnalysis.JetAnalysis.FullJetSequence_puLimitedDataPbPb")
-#or don't do that
-process.load("HeavyIonsAnalysis.JetAnalysis.FullJetSequence_puUnlimitedDataPbPb")
+process.load('HeavyIonsAnalysis.JetAnalysis.hiFJRhoAnalyzer_cff')
+
+process.voronoiBackgroundPF = voronoiBackgroundPF
+process.voronoiBackgroundCalo = voronoiBackgroundCalo
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.HiReRecoJets_HI_cff')
+
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akPu2CaloJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akVs2CaloJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akVs2PFJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akPu2PFJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akCs2PFJetSequence_PbPb_data_cff')
+
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akPu3CaloJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akVs3CaloJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akVs3PFJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akPu3PFJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akCs3PFJetSequence_PbPb_data_cff')
+
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akPu4CaloJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akVs4CaloJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akVs4PFJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akPu4PFJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akCs4PFJetSequence_PbPb_data_cff')
+
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akPu5CaloJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akVs5CaloJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akVs5PFJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akPu5PFJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akCs5PFJetSequence_PbPb_data_cff')
+
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akCsFilter4PFJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akCsFilter5PFJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akCsSoftDrop4PFJetSequence_PbPb_data_cff')
+process.load('HeavyIonsAnalysis.JetAnalysis.jets.akCsSoftDrop5PFJetSequence_PbPb_data_cff')
+
+process.highPurityTracks = cms.EDFilter("TrackSelector",
+                                        src = cms.InputTag("hiGeneralTracks"),
+                                        cut = cms.string('quality("highPurity")'))
+
+process.load("RecoVertex.PrimaryVertexProducer.OfflinePrimaryVertices_cfi")
+process.offlinePrimaryVertices.TrackLabel = 'highPurityTracks'
+
+process.jetSequences = cms.Sequence(
+    voronoiBackgroundPF+
+    voronoiBackgroundCalo+
+    process.kt4PFJets +
+    process.hiFJRhoProducer +
+	process.hiFJGridEmptyAreaCalculator +
+    process.hiFJRhoAnalyzer +
+    process.akPu2CaloJets +
+    process.akPu2PFJets +
+    process.akVs2CaloJets +
+    process.akVs2PFJets +
+    process.akCs2PFJets +
+
+    #process.akPu3CaloJets +
+    #process.akPu3PFJets +
+    process.akVs3CaloJets +
+    process.akVs3PFJets +
+    process.akCs3PFJets +
+
+    #process.akPu4CaloJets +
+    #process.akPu4PFJets +
+    process.akVs4CaloJets +
+    process.akVs4PFJets +
+    process.akCs4PFJets +
+
+    process.akPu5CaloJets +
+    process.akPu5PFJets +
+    process.akVs5CaloJets +
+    process.akVs5PFJets +
+    process.akCs5PFJets +
+
+    process.akCsFilter4PFJets +
+    process.akCsFilter5PFJets +
+    process.akCsSoftDrop4PFJets +
+    process.akCsSoftDrop5PFJets +
+
+    process.highPurityTracks +
+    process.offlinePrimaryVertices +
+
+    process.akPu2CaloJetSequence +
+    process.akVs2CaloJetSequence +
+    process.akVs2PFJetSequence +
+    process.akPu2PFJetSequence +
+    process.akCs2PFJetSequence +
+
+    process.akPu3CaloJetSequence +
+    process.akVs3CaloJetSequence +
+    process.akVs3PFJetSequence +
+    process.akPu3PFJetSequence +
+    process.akCs3PFJetSequence +
+
+    process.akPu4CaloJetSequence +
+    process.akVs4CaloJetSequence +
+    process.akVs4PFJetSequence +
+    process.akPu4PFJetSequence +
+    process.akCs4PFJetSequence +
+
+    process.akPu5CaloJetSequence +
+    process.akVs5CaloJetSequence +
+    process.akVs5PFJetSequence +
+    process.akPu5PFJetSequence +
+    process.akCs5PFJetSequence +
+
+    process.akCsFilter4PFJetSequence +
+    process.akCsFilter5PFJetSequence +
+    process.akCsSoftDrop4PFJetSequence +
+    process.akCsSoftDrop5PFJetSequence
+)
 
 #####################################################################################
 
@@ -130,19 +246,6 @@ process.ggHiNtuplizerGED = process.ggHiNtuplizer.clone(recoPhotonSrc = cms.Input
 process.load("HeavyIonsAnalysis.VectorBosonAnalysis.tupelSequence_PbPb_cff")
 
 #####################################################################################
-
-#replace pp CSVv2 with PbPb CSVv2 (positive and negative taggers unchanged!)
-process.load('RecoBTag.CSVscikit.csvscikitTagJetTags_cfi')
-process.load('RecoBTag.CSVscikit.csvscikitTaggerProducer_cfi')
-process.akPu4PFCombinedSecondaryVertexV2BJetTags = process.pfCSVscikitJetTags.clone()
-process.akPu4PFCombinedSecondaryVertexV2BJetTags.tagInfos=cms.VInputTag(cms.InputTag("akPu4PFImpactParameterTagInfos"), cms.InputTag("akPu4PFSecondaryVertexTagInfos"))
-
-process.akCs4PFCombinedSecondaryVertexV2BJetTags = process.pfCSVscikitJetTags.clone()
-process.akCs4PFCombinedSecondaryVertexV2BJetTags.tagInfos=cms.VInputTag(cms.InputTag("akCs4PFImpactParameterTagInfos"), cms.InputTag("akCs4PFSecondaryVertexTagInfos"))
-
-process.akPu4CaloCombinedSecondaryVertexV2BJetTags = process.pfCSVscikitJetTags.clone()
-process.akPu4CaloCombinedSecondaryVertexV2BJetTags.tagInfos=cms.VInputTag(cms.InputTag("akPu4CaloImpactParameterTagInfos"), cms.InputTag("akPu4CaloSecondaryVertexTagInfos"))
-process.CSVscikitTags.weightFile=cms.FileInPath('HeavyIonsAnalysis/JetAnalysis/data/bTagCSVv2PbPb_758p3_Jan2017_BDTG_weights.xml')
 
 #########################
 # Main analysis list

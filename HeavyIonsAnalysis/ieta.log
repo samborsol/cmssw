@@ -1,0 +1,67 @@
+EventAnalysis/src/HiEvtAnalyzer.cc:       bool isHF = tower.ietaAbs() > 2.9;
+JetAnalysis/src/FullConeProducer.cc:    int ieta = ctc->id().ieta();
+JetAnalysis/src/FullConeProducer.cc:    CaloTowerDetId id(ieta,iphi);
+JetAnalysis/src/HiFJRhoAnalyzer.cc:  for(int ieta = 0; ieta<(neta-1); ieta++) {
+JetAnalysis/src/HiFJRhoAnalyzer.cc:    rhoObj_.etaMin.push_back(etaRanges->at(ieta));
+JetAnalysis/src/HiFJRhoAnalyzer.cc:    rhoObj_.etaMax.push_back(etaRanges->at(ieta+1));
+JetAnalysis/src/HiFJRhoAnalyzer.cc:    rhoObj_.rho.push_back(rho->at(ieta));
+JetAnalysis/src/HiFJRhoAnalyzer.cc:    rhoObj_.rhom.push_back(rhom->at(ieta));
+JetAnalysis/src/HiFJRhoAnalyzer.cc:    rhoObj_.rhoCorr.push_back(rhoCorr->at(ieta));
+JetAnalysis/src/HiFJRhoAnalyzer.cc:    rhoObj_.rhomCorr.push_back(rhomCorr->at(ieta));
+JetAnalysis/src/HiFJRhoAnalyzer.cc:    rhoObj_.rhoCorr1Bin.push_back(rhoCorr1Bin->at(ieta));
+JetAnalysis/src/HiFJRhoAnalyzer.cc:    rhoObj_.rhomCorr1Bin.push_back(rhomCorr1Bin->at(ieta));
+JetAnalysis/src/HiPFCandAnalyzer.cc:   for(int ieta = 0; ieta < etaBins_; ++ieta){
+JetAnalysis/src/HiPFCandAnalyzer.cc:     pfEvt_.sumpt[ieta] = vnUE.get_sum_pt(ieta);
+JetAnalysis/src/HiPFCandAnalyzer.cc:       pfEvt_.vn[ifour * etaBins_ + ieta] = vnUE.get_vn(ifour,ieta);
+JetAnalysis/src/HiPFCandAnalyzer.cc:       pfEvt_.psin[ifour * etaBins_ + ieta] = vnUE.get_psin(ifour,ieta);
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:  TH2D* hPTieta;
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:  TH1D* hMeanieta;
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:  TH1D* hRMSieta;
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:  TH1D* hPUieta;
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:    ntuple = f->make<TNtuple>("nt","debug","ieta:eta:iphi:phi:pt:em:had");
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:    hPTieta = f->make<TH2D>("hPTieta","hPTieta",23,-11.5,11.5,200,0,10);
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:    hRMSieta = f->make<TH1D>("hRMSieta","hPTieta",23,-11.5,11.5);
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:    hMeanieta = f->make<TH1D>("hMeanieta","hPTieta",23,-11.5,11.5);
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:    hPUieta = f->make<TH1D>("hPUieta","hPTieta",23,-11.5,11.5);
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:    int ieta = -99;
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:      ieta = subtractor_->ieta(itow);
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:      hPTieta->Fill(ieta,pt);
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:  for(int ieta = -29; ieta < 30; ++ieta){
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:    if(ieta == 0) continue;
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:    CaloTowerDetId id(ieta,1);
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:    //  cout<<"iETA "<<ieta<<endl;
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:      hPUieta->Fill(ieta,pu);
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:      hMeanieta->Fill(ieta,mean);
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:      hRMSieta->Fill(ieta,sigma);
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:    int ieta = ctc->id().ieta();
+JetAnalysis/src/JetAlgorithmAnalyzer.cc:    CaloTowerDetId id(ieta,iphi);
+JetAnalysis/src/MyVirtualJetProducer.cc:  //  ntuple = new TNtuple("nt","debug","ieta:eta:iphi:phi");
+JetAnalysis/src/MyVirtualJetProducer.cc:      int ieta = ctc->id().ieta();
+JetAnalysis/src/MyVirtualJetProducer.cc:      if(0 && ntuple)ntuple->Fill(ieta, input->eta(), iphi, input->phi(),input->et(),ctc->emEt(),ctc->hadEt());
+JetAnalysis/src/MyVirtualJetProducer.cc:      if(abs(ieta) < 5){
+JetAnalysis/src/MyVirtualJetProducer.cc:          if(hd.ieta() != ieta || hd.iphi() != iphi){
+JetAnalysis/src/MyVirtualJetProducer.cc:	    cout<<"ieta candidate : "<<ieta<<" ieta detid : "<<hd.ieta()<<endl;
+JetAnalysis/src/MyVirtualJetProducer.cc:	  HcalDetId det(HcalBarrel,ieta,iphi,1);
+JetAnalysis/src/MyVirtualJetProducer.cc:	    cout<<"DetId not present in the Calo Geometry : ieta = "<<ieta<<" iphi = "<<iphi<<endl;
+JetAnalysis/src/RecHitTreeProducer.cc:  int ieta[MAXHITS];
+JetAnalysis/src/RecHitTreeProducer.cc:    for(int ieta = 0; ieta < etaBins_; ++ieta){
+JetAnalysis/src/RecHitTreeProducer.cc:      myTowers.sumpt[ieta] = vnUE.get_sum_pt(ieta);
+JetAnalysis/src/RecHitTreeProducer.cc:	myTowers.vn[ifour * etaBins_ + ieta] = vnUE.get_vn(ifour,ieta);
+JetAnalysis/src/RecHitTreeProducer.cc:	myTowers.psin[ifour * etaBins_ + ieta] = vnUE.get_psin(ifour,ieta);
+JetAnalysis/src/RecHitTreeProducer.cc:      if(hit.id().ieta() > 0){
+JetAnalysis/src/RecHitTreeProducer.cc:       bool isHF = tower.ietaAbs() > 29;
+JetAnalysis/src/RecHitTreeProducer.cc:      if(hit.ieta() > 29 && hit.energy() > hfTowerThreshold_) nHFtowerPlus++;
+JetAnalysis/src/RecHitTreeProducer.cc:      if(hit.ieta() < -29 && hit.energy() > hfTowerThreshold_) nHFtowerMinus++;
+PhotonAnalysis/plugins/ggHiNtuplizer.cc:	int ieta, iphi;
+PhotonAnalysis/plugins/ggHiNtuplizer.cc:        ecalLocal.localCoordsEB(*(theseed), es, cryEta, cryPhi, ieta, iphi, thetatilt, phitilt);
+PhotonAnalysis/plugins/ggHiNtuplizer.cc:        eleSeedCryIeta_ .push_back(ieta);
+TrackAnalysis/src/HiGenAnalyzer.cc:  for(Int_t ieta = 0; ieta < ETABINS; ++ieta){
+TrackAnalysis/src/HiGenAnalyzer.cc:    hev_.n[ieta] = 0;
+TrackAnalysis/src/HiGenAnalyzer.cc:    hev_.ptav[ieta] = 0;
+HFtowerMin.log:JetAnalysis/src/RecHitTreeProducer.cc:      if(hit.ieta() < -29 && hit.energy() > hfTowerThreshold_) nHFtowerMinus++;
+29.log:JetAnalysis/src/JetAlgorithmAnalyzer.cc:  for(int ieta = -29; ieta < 30; ++ieta){
+29.log:JetAnalysis/src/RecHitTreeProducer.cc:       bool isHF = tower.ietaAbs() > 29;
+29.log:JetAnalysis/src/RecHitTreeProducer.cc:      if(hit.ieta() > 29 && hit.energy() > hfTowerThreshold_) nHFtowerPlus++;
+29.log:JetAnalysis/src/RecHitTreeProducer.cc:      if(hit.ieta() < -29 && hit.energy() > hfTowerThreshold_) nHFtowerMinus++;
+29.log:HFtowerMin.log:JetAnalysis/src/RecHitTreeProducer.cc:      if(hit.ieta() < -29 && hit.energy() > hfTowerThreshold_) nHFtowerMinus++;
+grep: input file 'ieta.log' is also the output

@@ -1,0 +1,21 @@
+JetAnalysis/src/RecHitTreeProducer.cc:  hfRecHit.n = 0;
+JetAnalysis/src/RecHitTreeProducer.cc:      hfRecHit.e[hfRecHit.n] = hit.energy();
+JetAnalysis/src/RecHitTreeProducer.cc:	hfRecHit.et[hfRecHit.n] = getEt(pos,hit.energy());
+JetAnalysis/src/RecHitTreeProducer.cc:	hfRecHit.eta[hfRecHit.n] = pos.eta();
+JetAnalysis/src/RecHitTreeProducer.cc:	hfRecHit.phi[hfRecHit.n] = pos.phi();
+JetAnalysis/src/RecHitTreeProducer.cc:	hfRecHit.perp[hfRecHit.n] = pos.rho();
+JetAnalysis/src/RecHitTreeProducer.cc:	hfRecHit.et[hfRecHit.n] = getEt(hit.id(),hit.energy());
+JetAnalysis/src/RecHitTreeProducer.cc:	hfRecHit.eta[hfRecHit.n] = getEta(hit.id());
+JetAnalysis/src/RecHitTreeProducer.cc:	hfRecHit.phi[hfRecHit.n] = getPhi(hit.id());
+JetAnalysis/src/RecHitTreeProducer.cc:	hfRecHit.perp[hfRecHit.n] = getPerp(hit.id());
+JetAnalysis/src/RecHitTreeProducer.cc:	hfRecHit.etVtx[hfRecHit.n] = getEt(pos,hit.energy());
+JetAnalysis/src/RecHitTreeProducer.cc:	hfRecHit.etaVtx[hfRecHit.n] = pos.eta();
+JetAnalysis/src/RecHitTreeProducer.cc:	hfRecHit.phiVtx[hfRecHit.n] = pos.phi();
+JetAnalysis/src/RecHitTreeProducer.cc:	hfRecHit.perpVtx[hfRecHit.n] = pos.rho();
+JetAnalysis/src/RecHitTreeProducer.cc:      hfRecHit.isjet[hfRecHit.n] = false;
+JetAnalysis/src/RecHitTreeProducer.cc:      hfRecHit.depth[hfRecHit.n] = hit.id().depth();
+JetAnalysis/src/RecHitTreeProducer.cc:	  double dr = reco::deltaR(hfRecHit.eta[hfRecHit.n],hfRecHit.phi[hfRecHit.n],jet.eta(),jet.phi());
+JetAnalysis/src/RecHitTreeProducer.cc:	  if(dr < cone){ hfRecHit.isjet[hfRecHit.n] = true; }
+JetAnalysis/src/RecHitTreeProducer.cc:      if (hfRecHit.et[hfRecHit.n]>=hfPtMin_) hfRecHit.n++;
+JetAnalysis/src/RecHitTreeProducer.cc:    hfTree->Branch("n",&hfRecHit.n,"n/I");
+grep: input file ‘hfRecHitn.log’ is also the output

@@ -1,0 +1,117 @@
+CentralityAnalysis/macros/testCentralityBareRoot.C:  TFile* inf = new TFile("centralityfile.root");
+CentralityAnalysis/tools/makeDataCentralityTable.C:  // from input MC centrality table
+CentralityAnalysis/tools/makeTFileFromDB.py:                                   fileName = cms.string('centralityfile.root')
+CentralityAnalysis/tools/makeTFileFromDB.py:       centralityVariable = cms.string("HFhits"),
+CentralityAnalysis/tools/makeTFileFromDB.py:          centralitySrc = cms.InputTag("hiCentrality")
+CentralityAnalysis/tools/makeTable.C:  const char* infileName = Form("/net/hisrv0001/home/yetkin/hidsk0001/centrality/prod/%s/test.root",dataset);
+CentralityAnalysis/tools/makeTable2.C: //For data extra inputfile with Glauber centrality table and efficiency file
+CentralityAnalysis/tools/makeTable2.C: //Sorting the centrality variable vector
+Configuration/python/CommonFunctionsLocalDB2015_cff.py:#======  Final default common functions including centrality
+Configuration/python/CommonFunctionsLocalDBGammaJet_cff.py:#======  Final default common functions including centrality
+Configuration/python/CommonFunctionsLocalDB_cff.py:#======  Final default common functions including centrality
+Configuration/python/CommonFunctionsLocalDBforPPJEC_cff.py:#======  Final default common functions including centrality
+Configuration/python/CommonFunctions_cff.py:#======  Final default common functions including centrality
+Configuration/python/analysisEventContent_cff.py:muonTrkSkimContent = hiCommon.clone()  # trigger, L!, vertex,centrality, etc
+EventAnalysis/python/hievtanalyzer_data_cfi.py:   CentralityBinSrc = cms.InputTag("centralityBin","HFtowers"),
+Binary file EventAnalysis/python/hievtanalyzer_data_cfi.pyc matches
+EventAnalysis/src/HiEvtAnalyzer.cc:    edm::Handle<reco::Centrality> centrality;
+EventAnalysis/src/HiEvtAnalyzer.cc:    iEvent.getByToken(CentralityTag_, centrality);
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiNpix = centrality->multiplicityPixel();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiNpixelTracks = centrality->NpixelTracks();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiNtracks = centrality->Ntracks();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiNtracksPtCut = centrality->NtracksPtCut();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiNtracksEtaCut = centrality->NtracksEtaCut();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiNtracksEtaPtCut = centrality->NtracksEtaPtCut();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiHF = centrality->EtHFtowerSum();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFplus = centrality->EtHFtowerSumPlus();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFminus = centrality->EtHFtowerSumMinus();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFplusEta4 = centrality->EtHFtruncatedPlus();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFminusEta4 = centrality->EtHFtruncatedMinus();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFhit = centrality->EtHFhitSum();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFhitPlus = centrality->EtHFhitSumPlus();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFhitMinus = centrality->EtHFhitSumMinus();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiZDC = centrality->zdcSum();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiZDCplus = centrality->zdcSumPlus();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiZDCminus = centrality->zdcSumMinus();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiEEplus = centrality->EtEESumPlus();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiEEminus = centrality->EtEESumMinus();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiEE = centrality->EtEESum();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiEB = centrality->EtEBSum();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiET = centrality->EtMidRapiditySum();
+EventAnalysis/src/HiMixValidation.cc:   int NcentralityBins = 100;
+EventAnalysis/src/HiMixValidation.cc:      hCentralityBin = f->make<TH1D>("hCentralityBin",";Bin;Events",NcentralityBins,0,NcentralityBins);
+EventAnalysis/test/hiEvtAnalyzer_data_cfg.py:process.p = cms.Path(process.collisionEventSelectionAOD * process.centralityBin * process.hiEvtAnalyzer)
+EventAnalysis/test/hiEvtAnalyzer_mc_cfg.py:process.p = cms.Path(process.centralityBin * process.hiEvtAnalyzer)
+Binary file JetAnalysis/test/PbPb_DATA_AOD.root matches
+Binary file JetAnalysis/test/PbPb_MC_AODSIM.root matches
+Binary file JetAnalysis/test/PbPb_MC_RECODEBUG.root matches
+JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:process.GlobalTag = GlobalTag(process.GlobalTag, '75X_dataRun2_v13', '')  #for now track GT manually, since centrality tables updated ex post facto
+JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:process.centralityBin.Centrality = cms.InputTag("hiCentrality")
+JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:process.centralityBin.centralityVariable = cms.string("HFtowers")
+JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:                            process.centralityBin *
+JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:process.GlobalTag = GlobalTag(process.GlobalTag, '75X_mcRun2_HeavyIon_v13', '') #for now track GT manually, since centrality tables updated ex post facto
+JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:# process.centralityBin.Centrality = cms.InputTag("hiCentrality")
+JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:#process.centralityBin.nonDefaultGlauberModel = cms.string("HydjetDrum5")
+JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:                            process.centralityBin *
+JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:process.GlobalTag = GlobalTag(process.GlobalTag, '75X_mcRun2_HeavyIon_v13', '') #for now track GT manually, since centrality tables updated ex post facto
+JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:# process.centralityBin.Centrality = cms.InputTag("hiCentrality")
+JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:#process.centralityBin.nonDefaultGlauberModel = cms.string("HydjetDrum5")
+JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:                            process.centralityBin *
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:#                                , CentralityBinSrc = cms.InputTag("centralityBin","HFtowers")
+MuonAnalysis/src/HLTMuTree.cc:  //Get run, event, centrality
+PhotonAnalysis/plugins/evtCounter.cc:  nt       = fs->make<TNtuple>("cent", "centrality info",
+hiEvtAnalyzer.log:EventAnalysis/test/hiEvtAnalyzer_data_cfg.py:process.p = cms.Path(process.collisionEventSelectionAOD * process.centralityBin * process.hiEvtAnalyzer)
+hiEvtAnalyzer.log:EventAnalysis/test/hiEvtAnalyzer_mc_cfg.py:process.p = cms.Path(process.centralityBin * process.hiEvtAnalyzer)
+Binary file .nfs0000000000159bdd00000067 matches
+centralityBin.log:EventAnalysis/python/hievtanalyzer_data_cfi.py:   CentralityBinSrc = cms.InputTag("centralityBin","HFtowers"),
+centralityBin.log:EventAnalysis/src/HiMixValidation.cc:   int NcentralityBins = 100;
+centralityBin.log:EventAnalysis/src/HiMixValidation.cc:      hCentralityBin = f->make<TH1D>("hCentralityBin",";Bin;Events",NcentralityBins,0,NcentralityBins);
+centralityBin.log:EventAnalysis/test/hiEvtAnalyzer_data_cfg.py:process.p = cms.Path(process.collisionEventSelectionAOD * process.centralityBin * process.hiEvtAnalyzer)
+centralityBin.log:EventAnalysis/test/hiEvtAnalyzer_mc_cfg.py:process.p = cms.Path(process.centralityBin * process.hiEvtAnalyzer)
+centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:process.centralityBin.Centrality = cms.InputTag("hiCentrality")
+centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:process.centralityBin.centralityVariable = cms.string("HFtowers")
+centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:                            process.centralityBin *
+centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:# process.centralityBin.Centrality = cms.InputTag("hiCentrality")
+centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:#process.centralityBin.nonDefaultGlauberModel = cms.string("HydjetDrum5")
+centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:                            process.centralityBin *
+centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:# process.centralityBin.Centrality = cms.InputTag("hiCentrality")
+centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:#process.centralityBin.nonDefaultGlauberModel = cms.string("HydjetDrum5")
+centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:                            process.centralityBin *
+centralityBin.log:JetAnalysis/test/runForestAOD_pp_MC_75X.py:#                                , CentralityBinSrc = cms.InputTag("centralityBin","HFtowers")
+centralityBin.log:hiEvtAnalyzer.log:EventAnalysis/test/hiEvtAnalyzer_data_cfg.py:process.p = cms.Path(process.collisionEventSelectionAOD * process.centralityBin * process.hiEvtAnalyzer)
+centralityBin.log:hiEvtAnalyzer.log:EventAnalysis/test/hiEvtAnalyzer_mc_cfg.py:process.p = cms.Path(process.centralityBin * process.hiEvtAnalyzer)
+centralityBin.log:grep: input file 'centralityBin.log' is also the output
+collisionEventSelectionAOD.log:EventAnalysis/test/hiEvtAnalyzer_data_cfg.py:process.p = cms.Path(process.collisionEventSelectionAOD * process.centralityBin * process.hiEvtAnalyzer)
+collisionEventSelectionAOD.log:hiEvtAnalyzer.log:EventAnalysis/test/hiEvtAnalyzer_data_cfg.py:process.p = cms.Path(process.collisionEventSelectionAOD * process.centralityBin * process.hiEvtAnalyzer)
+collisionEventSelectionAOD.log:centralityBin.log:EventAnalysis/test/hiEvtAnalyzer_data_cfg.py:process.p = cms.Path(process.collisionEventSelectionAOD * process.centralityBin * process.hiEvtAnalyzer)
+collisionEventSelectionAOD.log:centralityBin.log:hiEvtAnalyzer.log:EventAnalysis/test/hiEvtAnalyzer_data_cfg.py:process.p = cms.Path(process.collisionEventSelectionAOD * process.centralityBin * process.hiEvtAnalyzer)
+collisionEventSelectionAOD.log:Binary file .centralityBin.log.swp matches
+HFtowers.log:EventAnalysis/python/hievtanalyzer_data_cfi.py:   CentralityBinSrc = cms.InputTag("centralityBin","HFtowers"),
+HFtowers.log:JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:process.centralityBin.centralityVariable = cms.string("HFtowers")
+HFtowers.log:JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+HFtowers.log:JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+HFtowers.log:JetAnalysis/test/runForestAOD_pp_MC_75X.py:#                                , CentralityBinSrc = cms.InputTag("centralityBin","HFtowers")
+HFtowers.log:centralityBin.log:EventAnalysis/python/hievtanalyzer_data_cfi.py:   CentralityBinSrc = cms.InputTag("centralityBin","HFtowers"),
+HFtowers.log:centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:process.centralityBin.centralityVariable = cms.string("HFtowers")
+HFtowers.log:centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+HFtowers.log:centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+HFtowers.log:centralityBin.log:JetAnalysis/test/runForestAOD_pp_MC_75X.py:#                                , CentralityBinSrc = cms.InputTag("centralityBin","HFtowers")
+hiHF.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiHF = centrality->EtHFtowerSum();
+hiHF.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFplus = centrality->EtHFtowerSumPlus();
+hiHF.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFminus = centrality->EtHFtowerSumMinus();
+hiHF.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFplusEta4 = centrality->EtHFtruncatedPlus();
+hiHF.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFminusEta4 = centrality->EtHFtruncatedMinus();
+hiHF.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFhit = centrality->EtHFhitSum();
+hiHF.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFhitPlus = centrality->EtHFhitSumPlus();
+hiHF.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFhitMinus = centrality->EtHFhitSumMinus();
+EtHFtowerSum.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiHF = centrality->EtHFtowerSum();
+EtHFtowerSum.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFplus = centrality->EtHFtowerSumPlus();
+EtHFtowerSum.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFminus = centrality->EtHFtowerSumMinus();
+EtHFtowerSum.log:hiHF.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiHF = centrality->EtHFtowerSum();
+EtHFtowerSum.log:hiHF.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFplus = centrality->EtHFtowerSumPlus();
+EtHFtowerSum.log:hiHF.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiHFminus = centrality->EtHFtowerSumMinus();
+grep: input file 'centrality.log' is also the output

@@ -1,0 +1,10 @@
+JetAnalysis/python/rechitanalyzer_cfi.py:  HFtowerMin = cms.untracked.double(3),
+Binary file JetAnalysis/python/rechitanalyzer_cfi.pyc matches
+JetAnalysis/src/RecHitTreeProducer.cc:  hfTowerThreshold_ = iConfig.getUntrackedParameter<double>("HFtowerMin",3.);
+JetAnalysis/src/RecHitTreeProducer.cc:  int nHFtowerMinus = 0;
+JetAnalysis/src/RecHitTreeProducer.cc:      if(hit.ieta() < -29 && hit.energy() > hfTowerThreshold_) nHFtowerMinus++;
+JetAnalysis/src/RecHitTreeProducer.cc:  nt->Fill(nHFtowerPlus,nHFtowerMinus,nHFlongPlus,nHFlongMinus,nHFshortPlus,nHFshortMinus);
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.rechitanalyzer.HFtowerMin = -9999
+Binary file JetAnalysis/test/runForestAOD_pp_MC_75X.pyc matches
+rechit.log:JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.rechitanalyzer.HFtowerMin = -9999
+grep: input file 'HFtowerMin.log' is also the output

@@ -1,0 +1,76 @@
+JetAnalysis/python/rechitanalyzer_aod_cfi.py:from HeavyIonsAnalysis.JetAnalysis.rechitanalyzer_cfi import *
+JetAnalysis/python/rechitanalyzer_aod_cfi.py:rechitanalyzer.doEcal = False
+JetAnalysis/python/rechitanalyzer_aod_cfi.py:rechitanalyzer.doHcal = False
+Binary file JetAnalysis/python/rechitanalyzer_aod_cfi.pyc matches
+JetAnalysis/python/rechitanalyzer_cfi.py:rechitanalyzer = cms.EDAnalyzer("RecHitTreeProducer",
+JetAnalysis/python/rechitanalyzer_cfi.py:pfTowers = rechitanalyzer.clone(
+JetAnalysis/python/rechitanalyzer_cfi.py:rechitanalyzer.HBHETreePtMin = cms.untracked.double(0)
+JetAnalysis/python/rechitanalyzer_cfi.py:rechitanalyzer.HFTreePtMin = cms.untracked.double(0)
+JetAnalysis/python/rechitanalyzer_cfi.py:rechitanalyzer.EBTreePtMin = cms.untracked.double(0)
+JetAnalysis/python/rechitanalyzer_cfi.py:rechitanalyzer.EETreePtMin = cms.untracked.double(0)
+JetAnalysis/python/rechitanalyzer_cfi.py:rechitanalyzer.TowerTreePtMin = cms.untracked.double(-9999)
+JetAnalysis/python/rechitanalyzer_cfi.py:rechitanalyzer.doHF = cms.untracked.bool(True)
+JetAnalysis/python/rechitanalyzer_cfi.py:rechitanalyzer.vtxSrc = cms.untracked.InputTag("offlinePrimaryVerticesWithBS")
+JetAnalysis/python/rechitanalyzer_cfi.py:rechitanalyzer.JetSrc = cms.untracked.InputTag("ak4CaloJets")
+JetAnalysis/python/rechitanalyzer_cfi.py:#rechitanalyzer.doVS = cms.untracked.bool(False)
+Binary file JetAnalysis/python/rechitanalyzer_cfi.pyc matches
+JetAnalysis/python/rechitanalyzer_pp_cfi.py:from HeavyIonsAnalysis.JetAnalysis.rechitanalyzer_cfi import *
+JetAnalysis/python/rechitanalyzer_pp_cfi.py:rechitanalyzer.vtxSrc = cms.untracked.InputTag("offlinePrimaryVerticesWithBS")
+JetAnalysis/python/rechitanalyzer_pp_cfi.py:rechitanalyzer.JetSrc = cms.untracked.InputTag("ak4CaloJets")
+JetAnalysis/python/rechitanalyzer_pp_cfi.py:rechitanalyzer.doVS = cms.untracked.bool(False)
+Binary file JetAnalysis/python/rechitanalyzer_pp_cfi.pyc matches
+JetAnalysis/src/RecHitTreeProducer.cc:    edm::Handle<CastorRecHitCollection> casrechits;
+JetAnalysis/src/RecHitTreeProducer.cc:    try{ ev.getByLabel("castorreco",casrechits); }
+JetAnalysis/src/RecHitTreeProducer.cc:    if(casrechits.failedToGet()!=0 || !casrechits.isValid()) {
+JetAnalysis/src/RecHitTreeProducer.cc:      for(size_t i1 = 0; i1 < casrechits->size(); ++i1) {
+JetAnalysis/src/RecHitTreeProducer.cc:	const CastorRecHit & rh = (*casrechits)[i1];
+JetAnalysis/src/RecHitTreeProducer.cc:      } // end loop castor rechits
+JetAnalysis/src/RecHitTreeProducer.cc:    edm::Handle<ZDCRecHitCollection> zdcrechits;
+JetAnalysis/src/RecHitTreeProducer.cc:    try{ ev.getByLabel(zdcRecHitSrc_,zdcrechits); }
+JetAnalysis/src/RecHitTreeProducer.cc:    if (zdcrechits.failedToGet()!=0 || !zdcrechits.isValid()) {
+JetAnalysis/src/RecHitTreeProducer.cc:      for(size_t i1 = 0; i1 < zdcrechits->size(); ++i1) {
+JetAnalysis/src/RecHitTreeProducer.cc:	const ZDCRecHit & rh = (*zdcrechits)[i1];
+JetAnalysis/src/RecHitTreeProducer.cc:      } // end loop zdc rechits
+JetAnalysis/src/RecHitTreeProducer.cc:      } // end loop zdc rechits
+JetAnalysis/src/RecHitTreeProducer.cc:    zdcRecHitTree = fs->make<TTree>("zdcrechit",versionTag);
+Binary file JetAnalysis/test/PbPb_DATA_AOD.root matches
+Binary file JetAnalysis/test/PbPb_MC_AODSIM.root matches
+Binary file JetAnalysis/test/pp_DATA_AOD.root matches
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.load('HeavyIonsAnalysis.JetAnalysis.rechitanalyzer_cfi')
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.rechitanalyzer.EBTreePtMin = -9999
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.rechitanalyzer.EETreePtMin = -9999
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.rechitanalyzer.HBHETreePtMin = -9999
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.rechitanalyzer.HFTreePtMin = -9999
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.rechitanalyzer.HFlongMin = -9999
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.rechitanalyzer.HFshortMin = -9999
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.rechitanalyzer.HFtowerMin = -9999
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.rechitAna = cms.Sequence(process.rechitanalyzer)
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:                            process.rechitAna +
+Binary file JetAnalysis/test/runForestAOD_pp_MC_75X.pyc matches
+PhotonAnalysis/plugins/HiEcalRecHitSpikeFilter.cc:  //grab rechits
+PhotonAnalysis/plugins/HiEcalRecHitSpikeFilter.cc:  const EcalRecHitCollection *rechits = EBReducedRecHits.product();
+PhotonAnalysis/plugins/HiEcalRecHitSpikeFilter.cc:  //get the rechit geometry
+PhotonAnalysis/plugins/HiEcalRecHitSpikeFilter.cc:  if(rechits) {
+PhotonAnalysis/plugins/HiEcalRecHitSpikeFilter.cc:    for(EcalRecHitCollection::const_iterator it=rechits->begin(); it!=rechits->end(); it++) {
+PhotonAnalysis/plugins/HiEcalRecHitSpikeFilter.cc:      double  swissCrx = EcalTools::swissCross  (it->id(), *rechits, 0.,avoidIeta85_);
+PhotonAnalysis/plugins/HiRecHitSpikeCleaner.cc:  //get the rechit geometry
+PhotonAnalysis/plugins/MultiPhotonAnalyzerTree.cc:    const EcalRecHitCollection & rechits = ( photon.isEB() ? *EBReducedRecHits : *EEReducedRecHits);
+PhotonAnalysis/plugins/MultiPhotonAnalyzerTree.cc:    EcalRecHitCollection::const_iterator it = rechits.find( id );
+PhotonAnalysis/plugins/MultiPhotonAnalyzerTree.cc:    if( it != rechits.end() ) {
+PhotonAnalysis/plugins/MultiPhotonAnalyzerTree.cc:      //severityFlag = EcalSeverityLevelAlgo::severityLevel(id, rechits);
+PhotonAnalysis/plugins/MultiPhotonAnalyzerTree.cc:  it = rechits.find( ids[ii][0] );
+PhotonAnalysis/plugins/MultiPhotonAnalyzerTree.cc:  if( it != rechits.end() ) { *(times[ii]) = it->time(); }
+PhotonAnalysis/plugins/SinglePhotonAnalyzerTree.cc:  // Get ES rechits
+PhotonAnalysis/src/RxCalculator.cc:      const HBHERecHit &rechit = (*fHBHERecHits_)[index];
+PhotonAnalysis/src/RxCalculator.cc:      const DetId &detid = rechit.id();
+PhotonAnalysis/src/RxCalculator.cc:         double et = rechit.energy()/cosh(eta);
+PhotonAnalysis/src/RxCalculator.cc:      const HORecHit &rechit = (*fHORecHits_)[index];
+PhotonAnalysis/src/RxCalculator.cc:      const DetId &detid = rechit.id();
+PhotonAnalysis/src/RxCalculator.cc:         double et = rechit.energy()/cosh(eta);
+PhotonAnalysis/src/RxCalculator.cc:      const HFRecHit &rechit = (*fHFRecHits_)[index];
+PhotonAnalysis/src/RxCalculator.cc:      const DetId &detid = rechit.id();
+PhotonAnalysis/src/RxCalculator.cc:         double et = rechit.energy()/cosh(eta);
+PhotonAnalysis/src/RxCalculator.cc:      const HBHERecHit &rechit = (*fHBHERecHits_)[index];
+PhotonAnalysis/src/RxCalculator.cc:      const DetId &detid = rechit.id();
+PhotonAnalysis/src/RxCalculator.cc:         double et = rechit.energy()/cosh(eta);
+grep: input file 'rechit.log' is also the output

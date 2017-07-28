@@ -1,0 +1,116 @@
+CentralityAnalysis/tools/makeMCtableFromPAT.C:  bool binHF = label.compare("HFtowers") == 0;
+CentralityAnalysis/tools/makeSmearedTable.C:  fitEff[i] = (TF1*)effFile->Get(Form("HFtowersPlusTrunc/fitEff%d",i));
+CentralityAnalysis/tools/makeSmearedTable.C:     if (sta[i]==1 && eta[i] > 4.0 && eta[i] < 5.2) { //HFtowersPlusEta4
+CentralityAnalysis/tools/makeSmearedTable.C:void makeSmearedTable(const int nbins = 100, const string label = "HFtowersPlusTrunc", const char * tag = "CentralityTable_HFtowersPlusTrunc_SmearedGlauber_sigma74_eff0_v5", int eff = 0) {
+CentralityAnalysis/tools/makeSmearedTable.C: bool binHFplusTrunc = label.compare("HFtowersPlusTrunc") == 0;
+CentralityAnalysis/tools/makeSmearedTable.C: bool binHFminusTrunc = label.compare("HFtowersMinusTrunc") == 0;
+CentralityAnalysis/tools/makeTable.C:  bool binHF = label.compare("HFtowers") == 0;
+CentralityAnalysis/tools/makeTable2.C:void makeTable2(int nbins = 100, const string label = "HFtowersPlusTrunc", const char * tag = "CentralityTable_HFplus100_PA2012B_v533x01_offline", bool isMC = false, int runNum = 1) {
+CentralityAnalysis/tools/makeTable2.C:   hEff1 = (TH1F*)effFile1->Get("HFtowersPlusTrunc/hEff");
+CentralityAnalysis/tools/makeTable2.C:   hEff2 = (TH1F*)effFile2->Get("HFtowersPlusTrunc/hEff");
+CentralityAnalysis/tools/makeTable2.C:   inputMCtable = (CentralityBins*)inputMCfile->Get("CentralityTable_HFtowersPlusTrunc_SmearedGlauber_v5/run1");
+CentralityAnalysis/tools/makeTable2.C: bool binHF = label.compare("HFtowers") == 0;
+CentralityAnalysis/tools/makeTable2.C: bool binHFplus = label.compare("HFtowersPlus") == 0;
+CentralityAnalysis/tools/makeTable2.C: bool binHFminus = label.compare("HFtowersMinus") == 0;
+CentralityAnalysis/tools/makeTable2.C: bool binHFplusTrunc = label.compare("HFtowersPlusTrunc") == 0;
+CentralityAnalysis/tools/makeTable2.C: bool binHFminusTrunc = label.compare("HFtowersMinusTrunc") == 0;
+Configuration/python/CommonFunctionsLocalDB2015_cff.py:                 tag = cms.string("CentralityTable_HFtowers40_HydjetBass_vv44x04_mc"),
+Configuration/python/CommonFunctionsLocalDB2015_cff.py:                 label = cms.untracked.string("HFtowersHydjet_Bass")
+Configuration/python/CommonFunctionsLocalDB2015_cff.py:                 tag = cms.string("CentralityTable_HFtowers200_HydjetDrum_v5315x01_mc"),
+Configuration/python/CommonFunctionsLocalDB2015_cff.py:                 label = cms.untracked.string("HFtowersHydjet_Drum")
+Configuration/python/CommonFunctionsLocalDB2015_cff.py:                 tag = cms.string("CentralityTable_HFtowers200_Glauber2010A_v5315x01_offline"),
+Configuration/python/CommonFunctionsLocalDB2015_cff.py:                 label = cms.untracked.string("HFtowers")
+Configuration/python/CommonFunctionsLocalDB2015_cff.py:                 label = cms.untracked.string("HFtowersPlusTrunc")
+Configuration/python/CommonFunctionsLocalDB2015_cff.py:                 label = cms.untracked.string("HFtowersTrunc")
+Configuration/python/CommonFunctionsLocalDB2015_cff.py:                 label = cms.untracked.string("HFtowersPlusTruncHijing")
+Configuration/python/CommonFunctionsLocalDB2015_cff.py:                 label = cms.untracked.string("HFtowersTruncHijing")
+Configuration/python/CommonFunctionsLocalDB2015_cff.py:                 label = cms.untracked.string("HFtowersPlusTruncEpos")
+Configuration/python/CommonFunctionsLocalDB2015_cff.py:                 label = cms.untracked.string("HFtowersTruncEpos")
+Binary file Configuration/python/CommonFunctionsLocalDB2015_cff.pyc matches
+Configuration/python/CommonFunctionsLocalDBGammaJet_cff.py:                                             tag = cms.string("CentralityTable_HFtowers40_HydjetBass_vv44x04_mc"),
+Configuration/python/CommonFunctionsLocalDBGammaJet_cff.py:                                             label = cms.untracked.string("HFtowersHydjet_Bass")
+Configuration/python/CommonFunctionsLocalDBGammaJet_cff.py:                 tag = cms.string("CentralityTable_HFtowers200_HydjetDrum_v5315x01_mc"),
+Configuration/python/CommonFunctionsLocalDBGammaJet_cff.py:                                             label = cms.untracked.string("HFtowersHydjet_Drum")
+Configuration/python/CommonFunctionsLocalDBGammaJet_cff.py:                 tag = cms.string("CentralityTable_HFtowers200_Glauber2010A_v5315x01_offline"),
+Configuration/python/CommonFunctionsLocalDBGammaJet_cff.py:                 label = cms.untracked.string("HFtowers")
+Configuration/python/CommonFunctionsLocalDBGammaJet_cff.py:                                             label = cms.untracked.string("HFtowersPlusTrunc")
+Configuration/python/CommonFunctionsLocalDBGammaJet_cff.py:                                             label = cms.untracked.string("HFtowersTrunc")
+Configuration/python/CommonFunctionsLocalDBGammaJet_cff.py:                                             label = cms.untracked.string("HFtowersPlusTruncHijing")
+Configuration/python/CommonFunctionsLocalDBGammaJet_cff.py:                                             label = cms.untracked.string("HFtowersTruncHijing")
+Configuration/python/CommonFunctionsLocalDBGammaJet_cff.py:                                             label = cms.untracked.string("HFtowersPlusTruncEpos")
+Configuration/python/CommonFunctionsLocalDBGammaJet_cff.py:                                             label = cms.untracked.string("HFtowersTruncEpos")
+Binary file Configuration/python/CommonFunctionsLocalDBGammaJet_cff.pyc matches
+Configuration/python/CommonFunctionsLocalDB_cff.py:                                             tag = cms.string("CentralityTable_HFtowers40_HydjetBass_vv44x04_mc"),
+Configuration/python/CommonFunctionsLocalDB_cff.py:                                             label = cms.untracked.string("HFtowersHydjet_Bass")
+Configuration/python/CommonFunctionsLocalDB_cff.py:                 tag = cms.string("CentralityTable_HFtowers200_HydjetDrum_v5315x01_mc"),
+Configuration/python/CommonFunctionsLocalDB_cff.py:                                             label = cms.untracked.string("HFtowersHydjet_Drum")
+Configuration/python/CommonFunctionsLocalDB_cff.py:                 tag = cms.string("CentralityTable_HFtowers200_Glauber2010A_v5315x01_offline"),
+Configuration/python/CommonFunctionsLocalDB_cff.py:                 label = cms.untracked.string("HFtowers")
+Configuration/python/CommonFunctionsLocalDB_cff.py:                                             label = cms.untracked.string("HFtowersPlusTrunc")
+Configuration/python/CommonFunctionsLocalDB_cff.py:                                             label = cms.untracked.string("HFtowersTrunc")
+Configuration/python/CommonFunctionsLocalDB_cff.py:                                             label = cms.untracked.string("HFtowersPlusTruncHijing")
+Configuration/python/CommonFunctionsLocalDB_cff.py:                                             label = cms.untracked.string("HFtowersTruncHijing")
+Configuration/python/CommonFunctionsLocalDB_cff.py:                                             label = cms.untracked.string("HFtowersPlusTruncEpos")
+Configuration/python/CommonFunctionsLocalDB_cff.py:                                             label = cms.untracked.string("HFtowersTruncEpos")
+Binary file Configuration/python/CommonFunctionsLocalDB_cff.pyc matches
+Configuration/python/CommonFunctionsLocalDBforPPJEC_cff.py:                 tag = cms.string("CentralityTable_HFtowers40_HydjetBass_vv44x04_mc"),
+Configuration/python/CommonFunctionsLocalDBforPPJEC_cff.py:                 label = cms.untracked.string("HFtowersHydjet_Bass")
+Configuration/python/CommonFunctionsLocalDBforPPJEC_cff.py:                 tag = cms.string("CentralityTable_HFtowers200_HydjetDrum_v5315x01_mc"),
+Configuration/python/CommonFunctionsLocalDBforPPJEC_cff.py:                 label = cms.untracked.string("HFtowersHydjet_Drum")
+Configuration/python/CommonFunctionsLocalDBforPPJEC_cff.py:                 tag = cms.string("CentralityTable_HFtowers200_Glauber2010A_v5315x01_offline"),
+Configuration/python/CommonFunctionsLocalDBforPPJEC_cff.py:                 label = cms.untracked.string("HFtowers")
+Configuration/python/CommonFunctionsLocalDBforPPJEC_cff.py:                 label = cms.untracked.string("HFtowersPlusTrunc")
+Configuration/python/CommonFunctionsLocalDBforPPJEC_cff.py:                 label = cms.untracked.string("HFtowersTrunc")
+Configuration/python/CommonFunctionsLocalDBforPPJEC_cff.py:                 label = cms.untracked.string("HFtowersPlusTruncHijing")
+Configuration/python/CommonFunctionsLocalDBforPPJEC_cff.py:                 label = cms.untracked.string("HFtowersTruncHijing")
+Configuration/python/CommonFunctionsLocalDBforPPJEC_cff.py:                 label = cms.untracked.string("HFtowersPlusTruncEpos")
+Configuration/python/CommonFunctionsLocalDBforPPJEC_cff.py:                 label = cms.untracked.string("HFtowersTruncEpos")
+Binary file Configuration/python/CommonFunctionsLocalDBforPPJEC_cff.pyc matches
+Configuration/python/CommonFunctions_cff.py:                 tag = cms.string("CentralityTable_HFtowers40_HydjetBass_vv44x04_mc"),
+Configuration/python/CommonFunctions_cff.py:                 label = cms.untracked.string("HFtowersHydjet_Bass")
+Configuration/python/CommonFunctions_cff.py:                 tag = cms.string("CentralityTable_HFtowers200_HydjetDrum_v5315x01_mc"),
+Configuration/python/CommonFunctions_cff.py:                 label = cms.untracked.string("HFtowersHydjet_Drum")
+Configuration/python/CommonFunctions_cff.py:                 tag = cms.string("CentralityTable_HFtowers200_Glauber2010A_v5315x01_offline"),
+Configuration/python/CommonFunctions_cff.py:                 label = cms.untracked.string("HFtowers")
+Configuration/python/CommonFunctions_cff.py:                 label = cms.untracked.string("HFtowersPlusTrunc")
+Configuration/python/CommonFunctions_cff.py:                 label = cms.untracked.string("HFtowersTrunc")
+Configuration/python/CommonFunctions_cff.py:                 label = cms.untracked.string("HFtowersPlusTruncHijing")
+Configuration/python/CommonFunctions_cff.py:                 label = cms.untracked.string("HFtowersTruncHijing")
+Configuration/python/CommonFunctions_cff.py:                 label = cms.untracked.string("HFtowersPlusTruncEpos")
+Configuration/python/CommonFunctions_cff.py:                 label = cms.untracked.string("HFtowersTruncEpos")
+Binary file Configuration/python/CommonFunctions_cff.pyc matches
+EventAnalysis/python/hievtanalyzer_data_cfi.py:   CentralityBinSrc = cms.InputTag("centralityBin","HFtowers"),
+Binary file EventAnalysis/python/hievtanalyzer_data_cfi.pyc matches
+Binary file JetAnalysis/test/PbPb_DATA_AOD.root matches
+Binary file JetAnalysis/test/PbPb_MC_AODSIM.root matches
+Binary file JetAnalysis/test/PbPb_MC_RECODEBUG.root matches
+JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:process.centralityBin.centralityVariable = cms.string("HFtowers")
+JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:#                                , CentralityBinSrc = cms.InputTag("centralityBin","HFtowers")
+grep: input file 'HFtowers.log' is also the output
+centrality.log:EventAnalysis/python/hievtanalyzer_data_cfi.py:   CentralityBinSrc = cms.InputTag("centralityBin","HFtowers"),
+centrality.log:JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:process.centralityBin.centralityVariable = cms.string("HFtowers")
+centrality.log:JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+centrality.log:JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+centrality.log:JetAnalysis/test/runForestAOD_pp_MC_75X.py:#                                , CentralityBinSrc = cms.InputTag("centralityBin","HFtowers")
+centrality.log:centralityBin.log:EventAnalysis/python/hievtanalyzer_data_cfi.py:   CentralityBinSrc = cms.InputTag("centralityBin","HFtowers"),
+centrality.log:centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:process.centralityBin.centralityVariable = cms.string("HFtowers")
+centrality.log:centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+centrality.log:centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+centrality.log:centralityBin.log:JetAnalysis/test/runForestAOD_pp_MC_75X.py:#                                , CentralityBinSrc = cms.InputTag("centralityBin","HFtowers")
+centrality.log:HFtowers.log:EventAnalysis/python/hievtanalyzer_data_cfi.py:   CentralityBinSrc = cms.InputTag("centralityBin","HFtowers"),
+centrality.log:HFtowers.log:JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:process.centralityBin.centralityVariable = cms.string("HFtowers")
+centrality.log:HFtowers.log:JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+centrality.log:HFtowers.log:JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+centrality.log:HFtowers.log:JetAnalysis/test/runForestAOD_pp_MC_75X.py:#                                , CentralityBinSrc = cms.InputTag("centralityBin","HFtowers")
+centrality.log:HFtowers.log:centralityBin.log:EventAnalysis/python/hievtanalyzer_data_cfi.py:   CentralityBinSrc = cms.InputTag("centralityBin","HFtowers"),
+centrality.log:HFtowers.log:centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:process.centralityBin.centralityVariable = cms.string("HFtowers")
+centrality.log:HFtowers.log:centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+centrality.log:HFtowers.log:centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+centrality.log:HFtowers.log:centralityBin.log:JetAnalysis/test/runForestAOD_pp_MC_75X.py:#                                , CentralityBinSrc = cms.InputTag("centralityBin","HFtowers")
+centralityBin.log:EventAnalysis/python/hievtanalyzer_data_cfi.py:   CentralityBinSrc = cms.InputTag("centralityBin","HFtowers"),
+centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:process.centralityBin.centralityVariable = cms.string("HFtowers")
+centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+centralityBin.log:JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:# process.centralityBin.centralityVariable = cms.string("HFtowers")
+centralityBin.log:JetAnalysis/test/runForestAOD_pp_MC_75X.py:#                                , CentralityBinSrc = cms.InputTag("centralityBin","HFtowers")

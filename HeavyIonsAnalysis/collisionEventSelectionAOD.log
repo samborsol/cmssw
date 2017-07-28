@@ -1,0 +1,12 @@
+Configuration/python/collisionEventSelection_cff.py:collisionEventSelectionAOD = cms.Sequence(hfCoincFilter3 *
+Binary file Configuration/python/collisionEventSelection_cff.pyc matches
+EventAnalysis/test/hiEvtAnalyzer_data_cfg.py:process.p = cms.Path(process.collisionEventSelectionAOD * process.centralityBin * process.hiEvtAnalyzer)
+JetAnalysis/test/runForestAOD_PbPb_DATA_75X.py:process.pcollisionEventSelection = cms.Path(process.collisionEventSelectionAOD)
+JetAnalysis/test/runForestAOD_PbPb_MB_75X.py:process.pcollisionEventSelection = cms.Path(process.collisionEventSelectionAOD)
+JetAnalysis/test/runForestAOD_PbPb_MIX_75X.py:process.pcollisionEventSelection = cms.Path(process.collisionEventSelectionAOD)
+hiEvtAnalyzer.log:EventAnalysis/test/hiEvtAnalyzer_data_cfg.py:process.p = cms.Path(process.collisionEventSelectionAOD * process.centralityBin * process.hiEvtAnalyzer)
+Binary file .nfs0000000000159bdd00000067 matches
+centralityBin.log:EventAnalysis/test/hiEvtAnalyzer_data_cfg.py:process.p = cms.Path(process.collisionEventSelectionAOD * process.centralityBin * process.hiEvtAnalyzer)
+centralityBin.log:hiEvtAnalyzer.log:EventAnalysis/test/hiEvtAnalyzer_data_cfg.py:process.p = cms.Path(process.collisionEventSelectionAOD * process.centralityBin * process.hiEvtAnalyzer)
+Binary file .centralityBin.log.swp matches
+grep: input file 'collisionEventSelectionAOD.log' is also the output

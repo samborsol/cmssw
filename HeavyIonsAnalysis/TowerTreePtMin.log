@@ -1,0 +1,6 @@
+JetAnalysis/python/rechitanalyzer_cfi.py:    TowerTreePtMin = cms.untracked.double(-99),
+JetAnalysis/python/rechitanalyzer_cfi.py:rechitanalyzer.TowerTreePtMin = cms.untracked.double(-9999)
+Binary file JetAnalysis/python/rechitanalyzer_cfi.pyc matches
+JetAnalysis/src/RecHitTreeProducer.cc:  towerPtMin_ = iConfig.getUntrackedParameter<double>("TowerTreePtMin",0.);
+rechit.log:JetAnalysis/python/rechitanalyzer_cfi.py:rechitanalyzer.TowerTreePtMin = cms.untracked.double(-9999)
+grep: input file 'TowerTreePtMin.log' is also the output

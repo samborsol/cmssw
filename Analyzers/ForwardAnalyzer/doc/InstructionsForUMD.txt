@@ -1,0 +1,145 @@
+﻿A GENERAL NOTE: WHEN I USE [] the brackets should not only be removed but the contents that are inside the bracket are a description of what you should put in that place. Code is written in italics, comments are written in normal text
+
+(only if you have not done this before) To begin, you may want to go here: https://account.cern.ch/account/Services/Myservices.aspx On the left hand side click the blue link that says “Linux and AFS”
+In the lower right hand corner there is a green/red bar that says “Home folder quota” with a link below it that says “Increase home folder quota to “SomeSize” GB”. Please click this until you have a disk quota of 10GB.
+
+Now to begin the coding(after someone ssh's into lxplus)
+
+cmsrel CMSSW_5_3_8_HI_patch2
+
+cd CMSSW_5_3_8_HI_patch2/src/
+
+cmsenv
+
+cvs co -d Analyzers/ForwardAnalyzer UserCode/Jgomez2/Analyzers/ForwardAnalyzer/
+ please be aware of the space between ForwardAnalyzer and UserCode   
+
+scram b
+
+cd Analyzers/ForwardAnalyzer/
+
+cp scripts/* .
+Please be aware of the space between the * and the .
+
+chmod a+x HADD.py 
+
+
+BE CAREFUL THIS IS WHERE IT GETS TOUGHER TO FOLLOW
+
+If someone looks here: https://twiki.cern.ch/twiki/bin/view/CMS/PAData2013#pPb_run_2013
+Then you can find a list of physics runs. 
+dbsql 'find dataset where run=[SomeRunYouFeelLikeAnalyzing]'
+
+Here there will be a long list of datasets which contain info from that run. I do not know which dataset you feel like using but GENERALLY I analyze the following datasets
+For RAW: /PAMinBiasUPC/HIRun2013-v1/RAW
+For Express RECO: /ExpressPhysics/HIRun2013-Express-v1/FEVT
+For prompt RECO (probably takes 48 hours after run to be available): /PAMinBiasUPC/HIRun2013-PromptReco-v1/RECO
+NOTE: If you want to help Sorina out and look at FSC data please see the section at the bottom about FSC
+dbsql 'find file where dataset=[DatasetYouHaveChosenToAnalyze] and run=[SomeRunYouFeelLikeAnalyzing]' > [NameOfTheTextFileWhichStoresYourRuns].txt
+
+emacs (OR gedit, OR vim if you prefer) [NameOfTheTextFileWhichStoresYourRuns].txt
+
+
+
+		You will now get a screen which looks like this:
+Using DBS instance at: http://cmsdbsprod.cern.ch/cms_dbs_prod_global/servlet/DBSServlet
+-------------------------------------------------------
+file
+
+/store/hidata/HIRun2013/MinimumBias/RAW/v1/000/210/498/00000/9693261D-2363-E211-A5CB-003048D2BB58.root
+/store/hidata/HIRun2013/MinimumBias/RAW/v1/000/210/498/00000/76F9ECDE-2263-E211-ABBE-003048D2C0F4.root
+
+                      Please Delete the first 4 (OR SO) lines so that the text file looks like this:
+/store/hidata/HIRun2013/MinimumBias/RAW/v1/000/210/498/00000/9693261D-2363-E211-A5CB-003048D2BB58.root
+/store/hidata/HIRun2013/MinimumBias/RAW/v1/000/210/498/00000/76F9ECDE-2263-E211-ABBE-003048D2C0F4.root
+
+Where the top line of your file should start with /store..then save and close the file. Note also: Your file may not have the same directory as mine does, in this example I chose the 
+dataset=/MinimumBias/HIRun2013-v1/RAW... but this is not the dataset you have to choose.
+Please save and close the file
+
+			NEW INSTRUCTIONS
+
+
+Please take note of the machine number you are working on, this is located at the beginning of your command line...for example mine looks like:
+
+[jgomez2@lxplus312 ForwardAnalyzer]$ ….this means I am working on lxplus312
+
+
+emacs (OR gedit, OR vim if you prefer) ana.sh
+Please notice the line that reads: upchome=/afs/cern.ch/work/j/jgomez2/private/CMSSW_5_3_8_HI/src/Analyzers/ForwardAnalyzer/
+
+Change this to: upchome=[WhereverYourCMSSWIsLocated]/CMSSW_5_3_8_HI_patch2/src/Analyzers/ForwardAnalyzer/
+DO NOT FORGET THE / at the end
+
+Also find the line that reads: 
+scp -o "StrictHostKeyChecking no" $output lxplus418:/tmp/jgomez2/
+
+Please change this to:
+scp -o "StrictHostKeyChecking no" $output [WhateverLXPlusMachineYouAreWorkingOn]:/tmp/[YourCERNUsername]/
+Again, please do not forget the / at the end
+Please save and close the file
+
+
+emacs (OR gedit, OR vim if you prefer) loopSub.sh
+Please notice the line that reads:
+anahome=/afs/cern.ch/work/j/jgomez2/private/CMSSW_5_3_8_HI/src/Analyzers/ForwardAnalyzer
+
+Please change this to:
+anahome=[WhereverYourCMSSWIsLocated]/CMSSW_5_3_8_HI_patch2/src/Analyzers/ForwardAnalyzer
+Please note the LACK of the / at the end
+Please save and close the file
+
+		THIS IS THE TRICKY PART
+
+Below in the command [NameOfTheTextFileWhichStoresYourRuns].txt is from earlier. [SomeOutputName] can be whatever you want to call it, although I might recommend something like ForwardTrees_Run[RunNumber]_ … the extra _ at the end there will really help later. 
+
+Please note: that your [SomeOutPutName] should not have a .root on the end of it...the script handles this automatically.
+
+Lastly, [WhichCFGyouWantToRun] depends on the dataset you are looking at.
+If RAW: [WhichCFGyouWantToRun] = forwardanalyzer_2013data_RAW_cfg.py
+If RECO: [WhichCFGyouWantToRun] = forwardanalyzer_2013data_cfg.py
+
+./loopSub.sh [NameOfTheTextFileWhichStoresYourRuns].txt [SomeOutputName] [WhichCFGyouWantToRun]
+
+What this script does is takes the list of root files from your text and submits what is called an LSF batch job for each file. This uses LXPlus' parallel computing abilities. Be warned you will get a ton of emails once your jobs are finished.
+
+These jobs should take about 3 or so minutes each, but you have to wait in the queue. The nice thing is that you can log out of lxplus without the jobs stopping. To check the status of your jobs type bjobs. 
+
+Once your jobs are done you can find them in the /tmp/[YourCERNUsername] folder. Of course, if you log out of lxplus and then you must type 
+ssh [WhateverLXPlusMachineYouAreWorkingOn]and then check the 
+/tmp/[YourCERNUsername] again. 
+
+Lastly, opening the file HADD.py
+emacs (OR gedit, OR vim if you prefer) HADD.py
+Look for the line that reads:
+
+basedir="/tmp/jgomez2/"
+
+Please change this to
+
+basedir="/tmp/[YourCERNUsername]/"
+Please do not forget the / at the end of the line
+
+Now look for the line that reads: 
+
+hadd="hadd /afs/cern.ch/work/j/jgomez2/private/CMSSW_5_3_8_HI_patch2/src/Analyzers/ForwardAnalyzer/ForwardTrees_210498merged.root "
+
+Please change this to:
+
+hadd="hadd [WhereverYourCMSSWIsLocated]/CMSSW_5_3_8_HI_patch2/src/Analyzers/ForwardAnalyzer/[WhateverYouWantToCallYourMergedRootFile].root "
+
+Please do not forget the .root at the end and also be warned that there is a space (on purpose) between .root and "
+
+Please save and close the file
+
+cmsRun HADD.py
+
+This last script will take your huge number of files from /tmp/[YourCERNUsername]
+and turn it into one file called [WhateverYouWantToCallYourMergedRootFile].root
+
+If you want to copy it to Maryland
+scp [WhateverYouWantToCallYourMergedRootFile].root [MyUMDUsername]@hepcms.umd.edu:[WhereverYouWantToStoreYourFile]/
+
+
+Special FSC instructions:
+If you want to look at FSC data you must choose a RAW dataset when selecting from dbsql. The only other thing that is different from the above steps is that the cfg you must input into loopSub.sh is the “forwardanalyzer_FSC_cfg.py”  

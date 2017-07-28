@@ -751,7 +751,7 @@ void ggHiNtuplizer::fillGenParticles(const edm::Event& e)
     if (!runOnParticleGun_ && !p->mother()) continue;
 
     // stable particles with pT > 5 GeV
-    bool isStableFast = (p->status() == 1 && p->pt() > 5.0);
+    bool isStableFast = (p->status() == 1 && p->pt() > 0.0);
 
     // stable leptons
     bool isStableLepton = (p->status() == 1 && abs(p->pdgId()) >= 11 && abs(p->pdgId()) <= 16);

@@ -1,0 +1,30 @@
+JetAnalysis/src/RecHitTreeProducer.cc:  MyRecHit hbheRecHit;
+JetAnalysis/src/RecHitTreeProducer.cc:  hbheRecHit.n = 0;
+JetAnalysis/src/RecHitTreeProducer.cc:	hbheRecHit.e[hbheRecHit.n] = hit.energy();
+JetAnalysis/src/RecHitTreeProducer.cc:	hbheRecHit.eraw[hbheRecHit.n] = hit.eraw();
+JetAnalysis/src/RecHitTreeProducer.cc:	  hbheRecHit.et[hbheRecHit.n] = getEt(pos,hit.energy());
+JetAnalysis/src/RecHitTreeProducer.cc:	  hbheRecHit.eta[hbheRecHit.n] = pos.eta();
+JetAnalysis/src/RecHitTreeProducer.cc:	  hbheRecHit.phi[hbheRecHit.n] = pos.phi();
+JetAnalysis/src/RecHitTreeProducer.cc:	  hbheRecHit.perp[hbheRecHit.n] = pos.rho();
+JetAnalysis/src/RecHitTreeProducer.cc:	  hbheRecHit.et[hbheRecHit.n] = getEt(hit.id(),hit.energy());
+JetAnalysis/src/RecHitTreeProducer.cc:	  hbheRecHit.eta[hbheRecHit.n] = getEta(hit.id());
+JetAnalysis/src/RecHitTreeProducer.cc:	  hbheRecHit.phi[hbheRecHit.n] = getPhi(hit.id());
+JetAnalysis/src/RecHitTreeProducer.cc:	  hbheRecHit.perp[hbheRecHit.n] = getPerp(hit.id());
+JetAnalysis/src/RecHitTreeProducer.cc:	  hbheRecHit.etVtx[hbheRecHit.n] = getEt(pos,hit.energy());
+JetAnalysis/src/RecHitTreeProducer.cc:	  hbheRecHit.etaVtx[hbheRecHit.n] = pos.eta();
+JetAnalysis/src/RecHitTreeProducer.cc:	  hbheRecHit.phiVtx[hbheRecHit.n] = pos.phi();
+JetAnalysis/src/RecHitTreeProducer.cc:	  hbheRecHit.perpVtx[hbheRecHit.n] = pos.rho();
+JetAnalysis/src/RecHitTreeProducer.cc:	hbheRecHit.isjet[hbheRecHit.n] = false;
+JetAnalysis/src/RecHitTreeProducer.cc:	hbheRecHit.depth[hbheRecHit.n] = hit.id().depth();
+JetAnalysis/src/RecHitTreeProducer.cc:	    double dr = reco::deltaR(hbheRecHit.eta[hbheRecHit.n],hbheRecHit.phi[hbheRecHit.n],jet.eta(),jet.phi());
+JetAnalysis/src/RecHitTreeProducer.cc:	    if(dr < cone){ hbheRecHit.isjet[hbheRecHit.n] = true; }
+JetAnalysis/src/RecHitTreeProducer.cc:	hbheRecHit.n++;
+JetAnalysis/src/RecHitTreeProducer.cc:    hbheTree->Branch("n",&hbheRecHit.n,"n/I");
+JetAnalysis/src/RecHitTreeProducer.cc:    hbheTree->Branch("e",hbheRecHit.e,"e[n]/F");
+JetAnalysis/src/RecHitTreeProducer.cc:    hbheTree->Branch("eraw",hbheRecHit.eraw,"eraw[n]/F");
+JetAnalysis/src/RecHitTreeProducer.cc:    hbheTree->Branch("et",hbheRecHit.et,"et[n]/F");
+JetAnalysis/src/RecHitTreeProducer.cc:    hbheTree->Branch("eta",hbheRecHit.eta,"eta[n]/F");
+JetAnalysis/src/RecHitTreeProducer.cc:    hbheTree->Branch("phi",hbheRecHit.phi,"phi[n]/F");
+JetAnalysis/src/RecHitTreeProducer.cc:    hbheTree->Branch("perp",hbheRecHit.perp,"perp[n]/F");
+JetAnalysis/src/RecHitTreeProducer.cc:    hbheTree->Branch("isjet",hbheRecHit.isjet,"isjet[n]/O");
+grep: input file 'hbheRecHit.log' is also the output

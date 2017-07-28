@@ -1,0 +1,15 @@
+CentralityAnalysis/tools/makeSmearedTable.C: float ee;		teven->SetBranchAddress("hiEE",	&ee);
+CentralityAnalysis/tools/makeTable.C:  t->SetBranchAddress("hiEE",&ee);
+CentralityAnalysis/tools/makeTable2.C: t->SetBranchAddress("hiEE",		&ee);
+EventAnalysis/src/HiEvtAnalyzer.cc:  float hiHF, hiHFplus, hiHFminus, hiHFplusEta4, hiHFminusEta4, hiHFhit, hiHFhitPlus, hiHFhitMinus, hiEB, hiET, hiEE, hiEEplus, hiEEminus, hiZDC, hiZDCplus, hiZDCminus;
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiEEplus = centrality->EtEESumPlus();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiEEminus = centrality->EtEESumMinus();
+EventAnalysis/src/HiEvtAnalyzer.cc:    hiEE = centrality->EtEESum();
+EventAnalysis/src/HiEvtAnalyzer.cc:  thi_->Branch("hiEE",&hiEE,"hiEE/F");
+EventAnalysis/src/HiEvtAnalyzer.cc:  thi_->Branch("hiEEplus",&hiEEplus,"hiEEplus/F");
+EventAnalysis/src/HiEvtAnalyzer.cc:  thi_->Branch("hiEEminus",&hiEEminus,"hiEEminus/F");
+centrality.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiEEplus = centrality->EtEESumPlus();
+centrality.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiEEminus = centrality->EtEESumMinus();
+centrality.log:EventAnalysis/src/HiEvtAnalyzer.cc:    hiEE = centrality->EtEESum();
+hiHF.log:EventAnalysis/src/HiEvtAnalyzer.cc:  float hiHF, hiHFplus, hiHFminus, hiHFplusEta4, hiHFminusEta4, hiHFhit, hiHFhitPlus, hiHFhitMinus, hiEB, hiET, hiEE, hiEEplus, hiEEminus, hiZDC, hiZDCplus, hiZDCminus;
+grep: input file 'hiEE.log' is also the output

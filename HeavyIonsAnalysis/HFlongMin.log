@@ -1,0 +1,12 @@
+JetAnalysis/python/rechitanalyzer_cfi.py:  HFlongMin = cms.untracked.double(0.5),
+Binary file JetAnalysis/python/rechitanalyzer_cfi.pyc matches
+JetAnalysis/src/RecHitTreeProducer.cc:  hfLongThreshold_ = iConfig.getUntrackedParameter<double>("HFlongMin",0.5);
+JetAnalysis/src/RecHitTreeProducer.cc:  int nHFlongMinus = 0;
+JetAnalysis/src/RecHitTreeProducer.cc:	if(hit.energy() > hfLongThreshold_ && hit.id().depth() == 1) nHFlongMinus++;
+JetAnalysis/src/RecHitTreeProducer.cc:  nt->Fill(nHFtowerPlus,nHFtowerMinus,nHFlongPlus,nHFlongMinus,nHFshortPlus,nHFshortMinus);
+JetAnalysis/src/RecHitTreeProducer.cc:  nt = fs->make<TNtuple>("ntEvent","","nHFplus:nHFminus:nHFlongPlus:nHFlongMinus:nHFshortPlus:nHFshortMinus");
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.rechitanalyzer.HFlongMin = -9999
+Binary file JetAnalysis/test/runForestAOD_pp_MC_75X.pyc matches
+rechit.log:JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.rechitanalyzer.HFlongMin = -9999
+HFtowerMin.log:JetAnalysis/src/RecHitTreeProducer.cc:  nt->Fill(nHFtowerPlus,nHFtowerMinus,nHFlongPlus,nHFlongMinus,nHFshortPlus,nHFshortMinus);
+grep: input file 'HFlongMin.log' is also the output

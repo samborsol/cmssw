@@ -1,0 +1,8 @@
+Binary file JetAnalysis/python/rechitanalyzer_cfi.pyc matches
+JetAnalysis/python/rechitanalyzer_cfi.py:rechitanalyzer.HFTreePtMin = cms.untracked.double(0)
+JetAnalysis/src/RecHitTreeProducer.cc:  hfPtMin_ = iConfig.getUntrackedParameter<double>("HFTreePtMin",0);
+JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.rechitanalyzer.HFTreePtMin = -9999
+Binary file JetAnalysis/test/runForestAOD_pp_MC_75X.pyc matches
+rechit.log:JetAnalysis/python/rechitanalyzer_cfi.py:rechitanalyzer.HFTreePtMin = cms.untracked.double(0)
+rechit.log:JetAnalysis/test/runForestAOD_pp_MC_75X.py:process.rechitanalyzer.HFTreePtMin = -9999
+grep: input file 'HFTreePtMin.log' is also the output
