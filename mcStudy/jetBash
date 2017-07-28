@@ -15,6 +15,10 @@ cd -
 #rm $Z/InterMed_37p2/digiData_$1.root
 #cmsRun $Z/step4_hiForest.py file:$Z/InterMed_37p2/recoData_$1.root $Z/TREE_37p2/hiForest_$1.root
 #rm $Z/InterMed_37p2/recoData_$1.root
-#cmsRun $Z/readHepMC_cfg.py file:$Z/hepmc/PbPb2015_jet_hepmc/rapgap_$1.dat $Z/aod/PbPb2015_jet_aod/aodMC$1.root
-cmsRun $Z/runForestAOD_pp_MC_75X.py file:$Z/aod/PbPb2015_jet_aod/aodMC$1.root $Z/tree/PbPb2015_jet_tree/hiforest$1.root
-#rm $Z/aod/PbPb2015_jet_aod/aodMC$1.root
+
+cmsRun $Z/readHepMC_cfg.py file:$Z/hepmc/PbPb2015_jet_hepmc_b15/rapgap_$1.dat $Z/aod/PbPb2015_jet_aod_b15/aodMC$1.root
+#cmsRun $Z/readHepMC_cfg.py file:$Z/hepmc/dpmjet/starlight$1.dat $Z/aod/dpmjet/aodMC$1.root
+cmsRun $Z/runForestAOD_pp_MC_75X_DataParallel.py file:$Z/aod/PbPb2015_jet_aod_b15/aodMC$1.root $Z/tree/PbPb2015_jet_tree_b15/hiforest$1.root
+#cmsRun $Z/runForestAOD_pp_MC_75X_DataParallel.py file:$Z/aod/dpmjet/aodMC$1.root $Z/tree/dpmjet/hiforest$1.root
+
+#rm $Z/aod/PbPb2015_jet_aod_b15/aodMC$1.root

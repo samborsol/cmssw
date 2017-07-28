@@ -1,0 +1,2 @@
+HiJetAlgos/src/ParametrizedSubtractor.cc:   centrality_ = cent->EtHFhitSum();
+grep: input file ‘EtHF.log’ is also the output

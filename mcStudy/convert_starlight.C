@@ -10,16 +10,16 @@ using namespace std;
 
 int makeEventsFile(int num=0,int particle_number = 0)
 {
-	string filename = "outputMC/PbPb2015_Jpsi_coh/slight.out"; //input
+	string filename = "slight.out"; //input
 	ifstream infile(filename.c_str());
 	char outfilename[100];
-	sprintf(outfilename,"hepmc/PbPb2015_Jpsi_coh_hepmc/starlight%d.dat",num+1);
+	sprintf(outfilename,"hepmc/dpmjet/starlight%d.dat",num+1);
 	ofstream output(outfilename);
 	if (! infile.is_open()) { cout << "\t ERROR: I can not open \"" << filename << "\"" << endl; return 0; }
 
 	string temp_string, temp;
 	istringstream curstring;
-	Int_t M = 1000; // N_events	
+	Int_t M = 100; // N_events	
 	Int_t K = num*M+1;  // first event 
 	const double MU = 0.105658369; // muon mass [GeV]
 	Int_t evt_n=0; // event_number, read from the input-file

@@ -46,6 +46,7 @@ process.g4SimHits.Generator.HepMCProductLabel = cms.string('source')
 process.source = cms.Source("MCFileSource",
     dropDescendantsOfDroppedBranches = cms.untracked.bool(False),
     fileNames = cms.untracked.vstring(sys.argv[2]),
+    #fileNames = cms.untracked.vstring("hepmc/PbPb2015_jet_hepmc_b12/rapgap_98.dat"),
     inputCommands = cms.untracked.vstring('keep *')
 )
 
@@ -75,6 +76,7 @@ process.AODSIMoutput = cms.OutputModule("PoolOutputModule",
     ),
     eventAutoFlushCompressedSize = cms.untracked.int32(15728640),
     fileName = cms.untracked.string(sys.argv[3]),
+#    fileName = cms.untracked.string("rapgapReco.root"),
     outputCommands = process.AODSIMEventContent.outputCommands
     #outputCommands = process.FEVTSIMEventContent.outputCommands,
 )

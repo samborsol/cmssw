@@ -1,0 +1,4 @@
+HiJetAlgos/interface/ParametrizedSubtractor.h:    edm::EDGetTokenT<reco::Centrality> centTag_;
+HiJetAlgos/src/ParametrizedSubtractor.cc:    centTag_ = iC.consumes<reco::Centrality>(iConfig.getUntrackedParameter<edm::InputTag>("centTag",edm::InputTag("hiCentrality","","RECO")));
+HiJetAlgos/src/ParametrizedSubtractor.cc:   edm::Handle<reco::Centrality> cent;
+grep: input file ‘Centrality.log’ is also the output

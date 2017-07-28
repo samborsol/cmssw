@@ -10,10 +10,10 @@ using namespace std;
 
 int hepmcSplitter(int num=0)
 {
-	string filename = "hepmc_HI_jetSel.dat"; //input
+	string filename = "rapgapBatches/hepmc_HI_jetSel_b15.dat"; //input
 	ifstream infile(filename.c_str());
 	char outfilename[100];
-	sprintf(outfilename,"hepmc/PbPb2015_jet_hepmc/rapgap_%d.dat",num+1);
+	sprintf(outfilename,"hepmc/PbPb2015_jet_hepmc_b15/rapgap_%d.dat",num+1);
 	ofstream output(outfilename);
 	if (! infile.is_open()) { cout << "\t ERROR: I can not open \"" << filename << "\"" << endl; return 0; }
 	string temp_string, temp;
@@ -54,6 +54,7 @@ int hepmcSplitter(int num=0)
 	infile.close();
 	output.close();
 	cout << eventsInNewFile << " events written in " << outfilename << endl;
+	return num;
 }
 
 void makefiles(int number_of_files=100) {
