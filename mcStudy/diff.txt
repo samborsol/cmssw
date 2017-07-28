@@ -1,9 +1,0 @@
-88a89,92
-> '''
-> process.mix.playback = True
-> process.mix.digitizers = cms.PSet()
-> '''
-99a104
-> '''
-105a111
-> '''
